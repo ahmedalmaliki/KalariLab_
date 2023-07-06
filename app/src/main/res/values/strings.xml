@@ -1,0 +1,284 @@
+<resources>
+    <string name="app_name">KalariLab</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="message_need_permission">Please give premission to open camera</string>
+    <string name="message_permission">Please give a premission to open Camera</string>
+    <string name="title_go_to_setting">Go to settings</string>
+    <string name="play_stop">Stop</string>
+    <string name="back">back</string>
+    <string name="dialog_permission_title" translatable="false">Grant Permissions</string>
+    <string name="dialog_permission_message" translatable="false">This app needs permission to use this feature. You can grant them in app settings.</string>
+    <string name="go_to_settings" translatable="false">GOTO SETTINGS</string>
+    <string name="error_gif" translatable="false">x or y bound size should be at least %1$dpx and file size should be no more than %2$sM</string>
+    <string name="button_sure_default">Ok</string>
+    <string name="button_sure">Ok(%1$d)</string>
+    <string name="continueS">Continue</string>
+    <string name="what_is_your_name">What\'s your name?</string>
+    <string name="so_that_we_know_how_to_call_you">So that we know how to call you.</string>
+    <string name="write_post_or_a_question">Write a post or ask a question.</string>
+    <string-array name="occupations">
+        <item>Student</item>
+        <item>Tutor</item>
+        <item>Tutor and Student</item>
+    </string-array>
+    <string-array name="warnings">
+        <item>Full Name Is Required!</item>
+        <item>Email Is Required!</item>
+        <item>Please Provide Valid Email!</item>
+        <item>Password Is Required!</item>
+        <item>Password is short!</item>
+        <item>Sorry we can not find an account with this email address!
+        Please try again, or create a new account.</item>
+        <item>The password is incorrect!</item>
+        <item>Username is required!</item>
+        <item>Please provide your school name</item>
+    </string-array>
+    <string-array name="messages">
+        <item>Check your e-mail to verify your account</item>
+        <item>Check your e-mail to reset Your password</item>
+        <item>This e-mail is already connected to an account!</item>
+        <item>Checking username...</item>
+        <item>Sorry..Username is already taken!</item>
+        <item>is available.</item>
+        <item>Resend verification message.</item>
+    </string-array>
+    <string-array name="genders">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name="postures">
+        <item>Lion</item>
+        <item>Horse</item>
+    </string-array>
+    <string name="empty_email_field">E-mail field can not be empty.</string>
+    <string name="invalid_email">Invalid E-mail.</string>
+    <string name="already_have_account">Already have an account?</string>
+    <string name="empty_password">Password field can not be empty.</string>
+    <string name="short_password">Password is too short.</string>
+
+    <string name="email_field">Email</string>
+    <string name="password_field">Password</string>
+    <string name="Log_in">Log in</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="register">Create Account</string>
+    <string name="full_name">Full Name</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="student">Student</string>
+    <string name="teacher">Teacher</string>
+    <string name="facebook_app_id">4325643354229855</string>
+    <string name="fb_login_protocol_scheme">fb4325643354229855</string>
+    <string name="register_success">User has been registered successfully!</string>
+    <string name="register_fail">Failed to register! please try again!</string>
+    <string name="ok">OK.</string>
+    <string name="username">Username</string>
+    <string name="ASCII" translatable="false">!"#$%\'()*+-./0123456789:;=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~</string>
+    <string name="next">Next</string>
+    <string name="otherOptionsForSignUp">Sign up with one of the following options.</string>
+    <string name="otherOptionsForLogIn">Log In with one of the following options.</string>
+    <string name="dontHaveAnAccount">Don\'t have an account?</string>
+    <string name="whereWereYouBorn">Where were you born?</string>
+    <string name="dateOfBirth">Date of birth.</string>
+    <string name="whatIsYourGender">What is your gender?</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="other">Other</string>
+    <string name="sign_out">sign out</string>
+    <string name="progress">Progress</string>
+    <string name="posture">Postures</string>
+
+
+    <!-- Strings for On Boarding Screen -->
+
+    <!--Titles-->
+    <string name="first_slide_title">Train At Home</string>
+    <string name="second_slide_title">Transform your Body</string>
+    <string name="third_slide_title">Build Absolute Focus</string>
+
+    <!--Descriptions-->
+    <string name="first_slide_desc">Join the most interactive Martial Arts Academy Online </string>
+    <string name="second_slide_desc">Learn exercises and techniques used for 1000s of years</string>
+    <string name="third_slide_desc">increase your physical and mental productivity</string>
+
+    <!--Buttons-->
+    <string name="skip_btn">Skip</string>
+    <string name="next_btn">Next</string>
+    <string name="let_get_started">Lets Get Started</string>
+    <string name="upgrade_to_premium">upgrade to premium</string>
+    <string name="shop_title">shop</string>
+    <string name="settings_title">Settings</string>
+    <string name="user_title"><![CDATA[user/> </menu>]]></string>
+    <string name="user_title1">user</string>
+    <string name="weekly_points">Weekly Points</string>
+    <string name="profile">Profile</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="about_me">About Me</string>
+    <string name="age">Age</string>
+    <string name="Gender">Gender</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="account">Account</string>
+    <string name="change_your_password">Change Your Password</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="current_password">Current Password</string>
+    <string name="new_password">New Password</string>
+    <string name="log_out">Log Out</string>
+    <string name="premium_plans">Premium Plans</string>
+    <string name="monthly_subscription">Monthly Subscription</string>
+    <string name="how_old_are_you">How old are you?</string>
+    <string name="letters">qwertyuASDFGHJKLPOIUYTREWQZXCVBNMQWERTYUIOPioplkjhgfd sazxcvbnm-_`.\'|</string>
+    <string name="when_you_were_born">When you were born?</string>
+    <string name="birth_date">Birth Date</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="points">Points</string>
+    <string name="monthly">Monthly</string>
+    <string name="choose_your_plan">Choose Your Plan.</string>
+    <string name="activate">Activate</string>
+    <string name="monthly_offer">One week free trail, then $ per month, cancel any time.</string>
+    <string name="annual">Annual</string>
+    <string name="annual_offer">One week free trail, then $ per year, cancel any time.</string>
+    <string name="classes">Classes</string>
+    <string name="levels">LEVELS</string>
+    <string name="gift_a_subscription">Gift a subscription</string>
+    <string name="the_username_of_the_recipient">The Username of the recipient</string>
+    <string name="username_does_not_exist">Username does not exist</string>
+    <string name="security">Security</string>
+    <string name="reset_email">Reset Email</string>
+    <string name="reset_username">Reset Username</string>
+    <string name="email">Email</string>
+    <string name="l1_headline">Foundation of practise:</string>
+    <string name="l1_desc">The warm-ups, postures and prayer forms and an introduction to the water form.</string>
+    <string name="l2_headline">Building flow and release:</string>
+    <string name="l2_desc">Progression through the water and fire forms of Arrapukai, plus the very secret pillai tangi form.</string>
+    <string name="l3_headline">Discovering effortless:</string>
+    <string name="l3_desc">Focusing on the empty-hand forms of southern style Kalari and the Vannakam prayer forms of Northern style.</string>
+    <string name="l4_headline">Building power, stability and explosiveness:</string>
+    <string name="l4_desc">Harnessing the potential energy of the body, through the Parrachakal and Tanchem forms.</string>
+    <string name="l5_desc">Bring together all that you have learnt to create concise and specific training programs for different goals PLUS some rare specialised techniques never before seen online</string>
+
+    <string name="level_1">Level 1</string>
+    <string name="level_2">Level 2</string>
+    <string name="level_3">Level 3</string>
+    <string name="level_4">Level 4</string>
+    <string name="level_5">Level 5</string>
+    <string name="train">Train</string>
+    <string name="personal_information">Personal Information</string>
+    <string name="current_plan">Current Plan</string>
+    <string name="pick_payment_method">Pick Payment Method</string>
+    <string name="charecters_username">qwertyuASDFGHJKLPOIUYTREWQZXCVBNMQWERTYUIOPioplkjhgfdsazxcvbnm-_`.\'|</string>
+    <string name="request_permission">request permission</string>
+    <string name="camera_error">error</string>
+    <string name="intro_message">intro message</string>
+    <string name="permission_request">premission request</string>
+    <string name="stop">stop</string>
+    <string name="record">record</string>
+    <string name="admin_panel">Admin Panel</string>
+    <string name="title_activity_terms_and_services">TermsAndServicesActivity</string>
+    <string name="large_text">
+        "Material is the metaphor.\n\n"
+
+        "A material metaphor is the unifying theory of a rationalized space and a system of motion."
+        "The material is grounded in tactile reality, inspired by the study of paper and ink, yet "
+        "technologically advanced and open to imagination and magic.\n"
+        "Surfaces and edges of the material provide visual cues that are grounded in reality. The "
+        "use of familiar tactile attributes helps users quickly understand affordances. Yet the "
+        "flexibility of the material creates new affordances that supercede those in the physical "
+        "world, without breaking the rules of physics.\n"
+        "The fundamentals of light, surface, and movement are key to conveying how objects move, "
+        "interact, and exist in space and in relation to each other. Realistic lighting shows "
+        "seams, divides space, and indicates moving parts.\n\n"
+
+        "Bold, graphic, intentional.\n\n"
+
+        "The foundational elements of print based design typography, grids, space, scale, color, "
+        "and use of imagery guide visual treatments. These elements do far more than please the "
+        "eye. They create hierarchy, meaning, and focus. Deliberate color choices, edge to edge "
+        "imagery, large scale typography, and intentional white space create a bold and graphic "
+        "interface that immerse the user in the experience.\n"
+        "An emphasis on user actions makes core functionality immediately apparent and provides "
+        "waypoints for the user.\n\n"
+
+        "Motion provides meaning.\n\n"
+
+        "Motion respects and reinforces the user as the prime mover. Primary user actions are "
+        "inflection points that initiate motion, transforming the whole design.\n"
+        "All action takes place in a single environment. Objects are presented to the user without "
+        "breaking the continuity of experience even as they transform and reorganize.\n"
+        "Motion is meaningful and appropriate, serving to focus attention and maintain continuity. "
+        "Feedback is subtle yet clear. Transitions are efﬁcient yet coherent.\n\n"
+
+        "3D world.\n\n"
+
+        "The material environment is a 3D space, which means all objects have x, y, and z "
+        "dimensions. The z-axis is perpendicularly aligned to the plane of the display, with the "
+        "positive z-axis extending towards the viewer. Every sheet of material occupies a single "
+        "position along the z-axis and has a standard 1dp thickness.\n"
+        "On the web, the z-axis is used for layering and not for perspective. The 3D world is "
+        "emulated by manipulating the y-axis.\n\n"
+
+        "Light and shadow.\n\n"
+
+        "Within the material environment, virtual lights illuminate the scene. Key lights create "
+        "directional shadows, while ambient light creates soft shadows from all angles.\n"
+        "Shadows in the material environment are cast by these two light sources. In Android "
+        "development, shadows occur when light sources are blocked by sheets of material at "
+        "various positions along the z-axis. On the web, shadows are depicted by manipulating the "
+        "y-axis only. The following example shows the card with a height of 6dp.\n\n"
+
+        "Resting elevation.\n\n"
+
+        "All material objects, regardless of size, have a resting elevation, or default elevation "
+        "that does not change. If an object changes elevation, it should return to its resting "
+        "elevation as soon as possible.\n\n"
+
+        "Component elevations.\n\n"
+
+        "The resting elevation for a component type is consistent across apps (e.g., FAB elevation "
+        "does not vary from 6dp in one app to 16dp in another app).\n"
+        "Components may have different resting elevations across platforms, depending on the depth "
+        "of the environment (e.g., TV has a greater depth than mobile or desktop).\n\n"
+
+        "Responsive elevation and dynamic elevation offsets.\n\n"
+
+        "Some component types have responsive elevation, meaning they change elevation in response "
+        "to user input (e.g., normal, focused, and pressed) or system events. These elevation "
+        "changes are consistently implemented using dynamic elevation offsets.\n"
+        "Dynamic elevation offsets are the goal elevation that a component moves towards, relative "
+        "to the component’s resting state. They ensure that elevation changes are consistent "
+        "across actions and component types. For example, all components that lift on press have "
+        "the same elevation change relative to their resting elevation.\n"
+        "Once the input event is completed or cancelled, the component will return to its resting "
+        "elevation.\n\n"
+
+        "Avoiding elevation interference.\n\n"
+
+        "Components with responsive elevations may encounter other components as they move between "
+        "their resting elevations and dynamic elevation offsets. Because material cannot pass "
+        "through other material, components avoid interfering with one another any number of ways, "
+        "whether on a per component basis or using the entire app layout.\n"
+        "On a component level, components can move or be removed before they cause interference. "
+        "For example, a floating action button (FAB) can disappear or move off screen before a "
+        "user picks up a card, or it can move if a snackbar appears.\n"
+        "On the layout level, design your app layout to minimize opportunities for interference. "
+        "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
+        "when a user tries to pick up one of cards.\n\n"
+    </string>
+    <string name="action_settings">Settings</string>
+
+</resources>

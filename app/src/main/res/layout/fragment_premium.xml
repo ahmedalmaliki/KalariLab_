@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:fillViewport="true"
+    android:background="@color/KalariLabMain">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/KalariLabMain"
+        tools:context=".Fragments.PremiumFragment">
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="4dp"
+            android:text="@string/choose_your_plan"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@id/gl_monthlyCardViewsLowerBorder"
+            app:layout_constraintStart_toStartOf="@id/gl_general_v"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_general_v"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.04" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_upperBorder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.02" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_general_v1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.96" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_cardViewsUpperBorder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.3" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_monthlyCardViewsLowerBorder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.45" />
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/monthly"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:backgroundTint="@color/KalariLAbSecondary"
+            app:layout_constraintBottom_toTopOf="@id/gl_monthlyCardViewsLowerBorder"
+            app:layout_constraintEnd_toEndOf="@id/gl_general_v1"
+            app:layout_constraintStart_toStartOf="@id/gl_general_v"
+            app:layout_constraintTop_toTopOf="@id/gl_cardViewsUpperBorder" />
+
+        <TextView
+            android:id="@+id/monthlyCardTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:elevation="3dp"
+            android:text="@string/monthly"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="@id/gl_general_v"
+            app:layout_constraintTop_toTopOf="@id/monthly" />
+
+        <Button
+            android:id="@+id/monthlyActivateBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:backgroundTint="@color/darkerGrey"
+            android:elevation="3dp"
+            android:text="@string/activate"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@id/monthly"
+            app:layout_constraintTop_toTopOf="@id/monthly" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:elevation="2dp"
+            android:text="@string/monthly_offer"
+            android:textColor="@color/lightGrey"
+            app:layout_constraintStart_toEndOf="@id/gl_general_v"
+            app:layout_constraintTop_toBottomOf="@id/monthlyActivateBtn"
+            app:layout_constraintBottom_toBottomOf="@id/monthly"
+            app:layout_constraintEnd_toEndOf="@id/gl_general_v1"
+
+            />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/Annual"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:backgroundTint="@color/KalariLAbSecondary"
+            app:layout_constraintTop_toBottomOf="@id/gl_annualCardViewsUpperBorder"
+            app:layout_constraintEnd_toEndOf="@id/gl_general_v1"
+            app:layout_constraintStart_toStartOf="@id/gl_general_v"
+            app:layout_constraintBottom_toTopOf="@id/gl_annualCardViewsLowerBorder"
+            />
+
+        <TextView
+            android:id="@+id/annualCardTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:elevation="3dp"
+            android:text="@string/annual"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="@id/gl_general_v"
+
+            app:layout_constraintTop_toTopOf="@id/Annual" />
+
+        <Button
+            android:id="@+id/annualActivateBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:backgroundTint="@color/darkerGrey"
+            android:elevation="3dp"
+            android:text="@string/activate"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@id/Annual"
+            app:layout_constraintTop_toTopOf="@id/Annual" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:elevation="2dp"
+            android:text="@string/annual_offer"
+            android:textColor="@color/lightGrey"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@id/Annual"
+            app:layout_constraintEnd_toEndOf="@id/Annual"
+            app:layout_constraintTop_toBottomOf="@id/annualActivateBtn"
+            app:layout_constraintBottom_toBottomOf="@id/Annual"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_annualCardViewsUpperBorder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_annualCardViewsLowerBorder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+
+            app:layout_constraintGuide_percent="0.65" />
+
+
+
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_giftingCardViewsUpperBorder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.7" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_giftingCardViewsLowerBorder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+             android:visibility="gone"/>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

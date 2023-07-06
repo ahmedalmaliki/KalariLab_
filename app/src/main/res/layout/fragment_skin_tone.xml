@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/KalariLabMain"
+    tools:context=".Fragments.skinToneFragment">
+
+    <ImageButton
+        android:id="@+id/st1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/st2"
+        app:layout_constraintBottom_toTopOf="@id/st3"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/image_button_border"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/circle_small_black_skin"
+        />
+
+    <ImageButton
+        android:background="@drawable/image_button_border"
+
+        android:id="@+id/st2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toEndOf="@id/st1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/st4"
+        android:src="@drawable/circle_small_white_skin" />
+
+    <ImageButton
+        android:id="@+id/st3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/image_button_border"
+        android:src="@drawable/circle_small_light_skin"
+        app:layout_constraintTop_toBottomOf="@id/st1"
+        app:layout_constraintEnd_toStartOf="@id/st4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/st5"/>
+
+    <ImageButton
+        android:id="@+id/st4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/image_button_border"
+        android:src="@drawable/circle_small_brown_skin"
+        app:layout_constraintStart_toEndOf="@id/st3"
+        app:layout_constraintTop_toBottomOf="@id/st2"
+        app:layout_constraintBottom_toTopOf="@id/st5"
+
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageButton
+        android:id="@+id/st5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/circle_small_darker_brown_skin"
+        app:layout_constraintTop_toBottomOf="@id/st4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/image_button_border"
+       />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

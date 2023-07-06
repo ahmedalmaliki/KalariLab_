@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:fillViewport="true"
+    android:background="@color/KalariLabMain">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/KalariLabMain"
+        tools:context=".Fragments.hairFragmentFemale">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:id="@+id/alignmentGuid"/>
+
+
+        <ImageButton
+            android:id="@+id/fh1"
+
+            android:background="@drawable/image_button_border"
+            android:layout_width="wrap_content"
+            android:layout_alignEnd="@id/alignmentGuid"
+            android:layout_alignParentStart="true"
+            android:layout_height="50dp"
+            android:scaleType="centerInside"
+
+            android:src="@drawable/fh1"
+            />
+
+        <ImageButton
+            android:id="@+id/fh2"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignStart="@id/alignmentGuid"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/fh1"
+            android:background="@drawable/image_button_border"
+            android:scaleType="centerInside"
+
+            android:src="@drawable/fh2" />
+
+        <ImageButton
+            android:id="@+id/fh3"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignEnd="@id/alignmentGuid"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/fh1"
+            android:background="@drawable/image_button_border"
+            android:scaleType="centerInside"
+
+            android:src="@drawable/fh3" />
+
+        <ImageButton
+            android:id="@+id/fh4"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignStart="@id/alignmentGuid"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/image_button_border"
+            android:src="@drawable/fh4"
+            android:layout_below="@id/fh2"
+            android:layout_toEndOf="@id/fh3"
+            android:scaleType="centerInside"
+
+            />
+
+        <ImageButton
+            android:id="@+id/fh5"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignEnd="@id/alignmentGuid"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/fh5"
+            android:layout_below="@id/fh3"
+            android:scaleType="centerInside"
+
+            android:background="@drawable/image_button_border"
+            />
+
+
+        <ImageButton
+            android:id="@+id/fh6"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:src="@drawable/fh6"
+            android:layout_alignStart="@id/alignmentGuid"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/fh4"
+            android:layout_toEndOf="@id/fh5"
+            android:scaleType="centerInside"
+
+            android:background="@drawable/image_button_border"
+            />
+        <ImageButton
+            android:id="@+id/fh7"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignEnd="@id/alignmentGuid"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/fh7"
+            android:layout_below="@id/fh5"
+            android:scaleType="centerInside"
+
+            android:background="@drawable/image_button_border"
+            />
+        <ImageButton
+            android:id="@+id/fh8"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignStart="@id/alignmentGuid"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/fh8"
+            android:layout_below="@id/fh6"
+            android:scaleType="centerInside"
+
+            android:layout_toEndOf="@id/fh7"
+            android:background="@drawable/image_button_border"
+            />
+        <ImageButton
+            android:id="@+id/fh9"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignEnd="@id/alignmentGuid"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/fh9"
+            android:layout_below="@id/fh7"
+            android:scaleType="centerInside"
+
+            android:background="@drawable/image_button_border"
+            />
+        <ImageButton
+            android:id="@+id/fh10"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:src="@drawable/fh10"
+            android:layout_alignStart="@id/alignmentGuid"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/fh7"
+            android:layout_toEndOf="@id/fh9"
+            android:scaleType="centerInside"
+
+            android:background="@drawable/image_button_border"
+            />
+        <ImageButton
+            android:id="@+id/fh11"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignEnd="@id/alignmentGuid"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/fh11"
+            android:scaleType="centerInside"
+
+            android:layout_below="@id/fh9"
+            android:background="@drawable/image_button_border"
+            />
+        <ImageButton
+            android:id="@+id/fh12"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignStart="@id/alignmentGuid"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/fh12"
+            android:layout_below="@id/fh10"
+            android:layout_toEndOf="@id/fh11"
+            android:scaleType="centerInside"
+
+            android:background="@drawable/image_button_border"
+            />
+        <ImageButton
+            android:id="@+id/fh13"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignEnd="@id/alignmentGuid"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/fh13"
+            android:layout_below="@id/fh11"
+            android:scaleType="centerInside"
+
+            android:background="@drawable/image_button_border"
+            />
+        <ImageButton
+            android:id="@+id/fh14"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignStart="@id/alignmentGuid"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/fh14"
+            android:layout_below="@id/fh12"
+            android:layout_toEndOf="@id/fh13"
+            android:scaleType="centerInside"
+
+            android:background="@drawable/image_button_border"
+            />
+        <ImageButton
+            android:id="@+id/fh15"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignEnd="@id/alignmentGuid"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/fh15"
+            android:layout_below="@id/fh13"
+            android:scaleType="centerInside"
+
+            android:background="@drawable/image_button_border"
+            />
+
+
+
+    </RelativeLayout>
+
+
+</androidx.core.widget.NestedScrollView>

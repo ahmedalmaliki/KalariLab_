@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeRefresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.core.widget.NestedScrollView
+
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:fillViewport="true">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/KalariLabMain"
+        tools:context=".Activities.MainActivity">
+
+
+        <ImageView
+            android:layout_width="@dimen/logo_width"
+            android:layout_height="@dimen/logo_height"
+            android:src="@drawable/kalari_logo"
+            app:layout_constraintStart_toStartOf="@id/gl_logo_h"
+            app:layout_constraintTop_toBottomOf="@id/gl_logo_h" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_general_v"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.04" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_general_v1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.96" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_logo_h"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.01" />
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/progressCard"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="@dimen/progressCard_elevation"
+            app:layout_constraintBottom_toTopOf="@id/gl_cardViewsLowerBorder"
+            app:layout_constraintEnd_toStartOf="@id/gl_progressCard"
+            app:layout_constraintStart_toStartOf="@id/gl_general_v"
+            app:layout_constraintTop_toBottomOf="@id/gl_cardViewsUpperBorder" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/cardsText_startMargin"
+            android:layout_marginTop="@dimen/cardText_marginTop"
+            android:elevation="50dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/progress"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:textColor="@color/darkerGrey"
+            android:textSize="@dimen/cardsText_size"
+            app:layout_constraintStart_toStartOf="@id/progressCard"
+            app:layout_constraintTop_toTopOf="@id/progressCard"
+
+
+            />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progressCircleClasses"
+            style="@style/Widget.MaterialComponents.CircularProgressIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:elevation="50dp"
+            app:indicatorColor="@color/KalariLAbSecondary"
+            app:indicatorSize="@dimen/progressCard_indicatorSize"
+            app:layout_constraintBottom_toBottomOf="@id/progressCard"
+            app:layout_constraintEnd_toEndOf="@id/progressCard"
+            app:layout_constraintStart_toStartOf="@id/progressCard"
+            app:layout_constraintTop_toTopOf="@id/progressCard"
+            app:trackColor="@color/lightGrey"
+            app:trackCornerRadius="@dimen/progressCard_trackRadius"
+            app:trackThickness="@dimen/progressCard_trackThickness"
+
+
+            />
+
+
+        <TextView
+            android:id="@+id/classesProgressText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="50dp"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="@color/darkerGrey"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@id/progressCircleClasses"
+            app:layout_constraintEnd_toEndOf="@id/progressCircleClasses"
+            app:layout_constraintStart_toStartOf="@id/progressCircleClasses"
+            app:layout_constraintTop_toTopOf="@id/progressCircleClasses" />
+
+        <TextView
+            android:id="@+id/levelsProgressText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:elevation="50dp"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="@color/darkGrey"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="@id/progressCircleClasses"
+            app:layout_constraintEnd_toEndOf="@id/progressCircleClasses"
+            app:layout_constraintStart_toStartOf="@id/progressCircleClasses"
+            app:layout_constraintTop_toBottomOf="@id/classesProgressText" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_cardViewsUpperBorder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.244" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_cardViewsLowerBorder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.59" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_progressCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.49" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_pointsCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.51" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/pointsCard"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="@dimen/progressCard_elevation"
+            app:layout_constraintBottom_toTopOf="@id/gl_cardViewsLowerBorder"
+            app:layout_constraintEnd_toStartOf="@id/gl_general_v1"
+            app:layout_constraintStart_toStartOf="@id/gl_pointsCard"
+            app:layout_constraintTop_toBottomOf="@id/gl_cardViewsUpperBorder">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:id="@+id/progressCirclePoints"
+                    style="@style/Widget.MaterialComponents.CircularProgressIndicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    app:indicatorColor="@color/KalariLAbSecondary"
+
+                    app:indicatorSize="120dp"
+                    app:trackColor="@color/lightGrey"
+                    app:trackCornerRadius="@dimen/progressCard_trackRadius"
+                    app:trackThickness="@dimen/progressCard_trackThickness" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/weeklyPointTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:elevation="50dp"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="@string/weekly_points"
+                        android:textColor="@color/darkerGrey" />
+
+                    <TextView
+                        android:id="@+id/weeklyPoints"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/roboto_medium"
+
+                        android:textColor="@color/KalariLAbSecondary" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/totalPoints"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/progressCirclePoints"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/roboto_medium"
+
+                    android:text="" />
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/cardsText_startMargin"
+            android:layout_marginTop="@dimen/cardText_marginTop"
+            android:elevation="50dp"
+            android:fontFamily="@font/roboto_medium"
+
+            android:text="@string/points"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:textColor="@color/darkerGrey"
+            android:textSize="@dimen/cardsText_size"
+            app:layout_constraintStart_toStartOf="@id/pointsCard"
+            app:layout_constraintTop_toTopOf="@id/pointsCard"
+
+            />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_posturesCardUpperBorder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.61" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_posturesCardLowerBorder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/posturesCard"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="@dimen/progressCard_elevation"
+            app:layout_constraintBottom_toTopOf="@id/gl_posturesCardLowerBorder"
+            app:layout_constraintEnd_toStartOf="@id/gl_general_v1"
+            app:layout_constraintStart_toStartOf="@id/gl_general_v"
+            app:layout_constraintTop_toBottomOf="@id/gl_posturesCardUpperBorder" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/cardsText_startMargin"
+            android:layout_marginTop="@dimen/cardText_marginTop"
+            android:elevation="50dp"
+            android:fontFamily="@font/roboto_medium"
+
+            android:text="@string/posture"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:textColor="@color/darkerGrey"
+            android:textSize="@dimen/cardsText_size"
+            app:layout_constraintStart_toStartOf="@id/posturesCard"
+            app:layout_constraintTop_toTopOf="@id/posturesCard"
+
+            />
+
+        <ru.nikartm.support.ImageBadgeView
+            android:id="@+id/ibv_icon2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/elephant"
+            android:layout_gravity="center"
+            android:elevation="50dp"
+            android:padding="10dp"
+            app:ibv_badgeColor="@color/KalariLAbSecondary"
+            app:ibv_badgeLimitValue="false"
+            app:ibv_badgeTextColor="@color/white"
+            app:ibv_badgeTextSize="12sp"
+            app:ibv_badgeTextStyle="bold"
+            app:ibv_fixedBadgeRadius="15dp"
+            app:layout_constraintBottom_toBottomOf="@id/posturesCard"
+            app:layout_constraintEnd_toEndOf="@id/posturesCard"
+            app:layout_constraintStart_toStartOf="@id/posturesCard"
+            app:layout_constraintTop_toTopOf="@id/gl_postureAvatarUpperBorder"
+            android:layout_margin="5dp"
+            />
+<!--            <ImageView-->
+<!--                android:id="@+id/posture"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="0dp"-->
+<!--                app:layout_constraintBottom_toBottomOf="@id/posturesCard"-->
+<!--                app:layout_constraintEnd_toEndOf="@id/gl_postureAvatarLeftBorder"-->
+<!--                app:layout_constraintStart_toStartOf="@id/gl_postureAvatarRightBorder"-->
+<!--                app:layout_constraintTop_toTopOf="@id/gl_postureAvatarUpperBorder"-->
+<!--                android:layout_margin="0dp"-->
+<!--                android:elevation="100dp"-->
+<!--                />-->
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_postureAvatarLeftBorder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.7" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_postureAvatarRightBorder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.3" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_postureAvatarUpperBorder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.66" />
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/celebration_card"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:cardBackgroundColor="@color/KalariLAbSecondary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_margin="50dp"
+            app:cardElevation="50dp"
+            android:visibility="gone"
+            />
+
+            <ImageButton
+                android:id="@+id/closeBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:elevation="51dp"
+                android:backgroundTint="@color/transparent"
+                android:src="@drawable/close"
+                app:layout_constraintStart_toStartOf="@id/celebration_card"
+                app:layout_constraintTop_toTopOf="@id/celebration_card"
+                android:visibility="gone"
+                />
+
+        <ImageView
+            android:id="@+id/celebration_posture"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="20dp"
+            android:elevation="51dp"
+            app:layout_constraintBottom_toTopOf="@id/celebration_text"
+            app:layout_constraintEnd_toEndOf="@id/celebration_card"
+            app:layout_constraintStart_toStartOf="@id/celebration_card"
+            app:layout_constraintTop_toTopOf="@id/gl_cardViewsUpperBorder"
+            android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/celebration_text"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:elevation="51dp"
+                android:layout_margin="20dp"
+                app:layout_constraintStart_toStartOf="@id/celebration_card"
+                app:layout_constraintTop_toBottomOf="@id/celebration_posture"
+                app:layout_constraintBottom_toBottomOf="@id/celebration_card"
+                app:layout_constraintEnd_toEndOf="@id/celebration_card"
+                android:visibility="gone"
+                />
+        <nl.dionsegijn.konfetti.xml.KonfettiView
+            android:id="@+id/konfettiView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="52dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/KalariLabMain"
+    android:weightSum="100"
+    >
+
+    <ImageButton
+        android:background="@drawable/image_button_border"
+        android:id="@+id/rightMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_weight="50"
+         />
+
+    <ImageButton
+        android:id="@+id/leftMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:background="@drawable/image_button_border"
+        android:layout_weight="50"
+      />
+
+
+
+</LinearLayout>

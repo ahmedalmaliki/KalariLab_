@@ -1,0 +1,147 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.KalariLab" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="android:colorPrimary">@color/KalariLabMain</item>
+        <item name="colorPrimaryVariant">@color/KalariLabMain</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/KalariLAbSecondary</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="fontFamily">      @font/roboto_medium</item>
+        <item name="colorAccent">@color/KalariLAbSecondary</item>
+        <item name="android:autofilledHighlight">@android:color/transparent</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+    <style name="Theme.KalariLab.SlidrActivityTheme"  parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/KalariLabMain</item>
+        <item name="colorPrimaryVariant">@color/KalariLabMain</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/KalariLAbSecondary</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="fontFamily">      @font/roboto_medium</item>
+        <item name="colorAccent">@color/KalariLAbSecondary</item>
+        <item name="android:autofilledHighlight">@android:color/transparent</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+    <style name="LoggingTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">@color/text_input_box_stroke</item>
+        <item name="android:state_selected">false</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="boxBackgroundColor">@color/colorOnMain</item>
+        <item name="boxCornerRadiusBottomEnd">15dp</item>
+        <item name="boxCornerRadiusBottomStart">15dp</item>
+        <item name="boxCornerRadiusTopEnd">15dp</item>
+        <item name="boxCornerRadiusTopStart">15dp</item>
+        <item name="android:textColor">@color/text_input_box_hint</item>
+        <item name="hintEnabled">true</item>
+        <item name="hintAnimationEnabled">true</item>
+        <item name="android:textColorHint">@color/text_input_box_hint</item>
+        <item name="android:textAppearance">@style/LoggingInputTextStyle</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/logging_inputBox_height</item>
+    </style>
+    <style name="LoggingInputTextStyle" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/text_input_box_hint</item>
+    </style>
+    <style name="registerButtonStyle" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/button_height</item>
+        <item name="android:layout_marginTop">@dimen/button_marginTop</item>
+        <item name="backgroundTint">@color/KalariLAbSecondary</item>
+        <item name="android:textSize">@dimen/button_textSize</item>
+    </style>
+
+    <style name="goToActivityButtonStyle" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_below">@+id/register</item>
+        <item name="android:layout_marginTop">@dimen/goToSignInOrUpButton_marginTop</item>
+         <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:text">@string/Log_in</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="continueButtonStyle" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/button_height</item>
+        <item name="android:layout_marginTop">@dimen/button_marginTop</item>
+        <item name="backgroundTint">@color/KalariLAbSecondary</item>
+        <item name="android:text">@string/continueS</item>
+         <item name="android:textSize">@dimen/button_textSize</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+<style name="genderBoxStyle" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <item name="android:layout_height">0dp</item>
+    <item name="android:layout_width">0dp</item>
+    <item name="background">@drawable/gender_btn_background_color</item>
+    <item name="android:textSize">@dimen/genderBox_textSize</item>
+    <item name="iconPadding">@dimen/genderBox_iconPadding</item>
+    <item name="android:state_selected">false</item>
+    <item name="autoSizeTextType">uniform</item>
+
+
+</style>
+<style name="personalInfoStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+
+    <item name="boxStrokeColor">@color/text_input_box_stroke</item>
+    <item name="android:state_selected">false</item>
+    <item name="boxStrokeWidth">2dp</item>
+    <item name="boxBackgroundColor">@color/colorOnMain</item>
+
+    <item name="android:textColor">@color/text_input_box_hint</item>
+    <item name="hintEnabled">true</item>
+    <item name="hintAnimationEnabled">true</item>
+    <item name="android:textColorHint">@color/text_input_box_hint</item>
+    <item name="android:textAppearance">@style/LoggingInputTextStyle</item>
+    <item name="android:layout_width">0dp</item>
+    <item name="android:layout_height">wrap_content</item>
+</style>
+
+    <style name="spinnerTheme">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+<style name="CustomActivityAnimation" parent="@android:style/Animation.Activity">
+<item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
+<item name="android:activityOpenExitAnimation">@anim/slide_out_left</item>
+<item name="android:activityCloseEnterAnimation">@anim/slide_in_left</item>
+<item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>
+</style>
+    <style name="TitleTextStyle" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/roboto_regular</item>
+        <item name="backgroundTint">@color/KalariLabMain</item>
+
+    </style>
+    <style name="Stripe.CardInputWidget.EditText" parent="Stripe.Base.CardInputWidget.EditText">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/white</item>
+    </style>
+    <style name="BottomSheetDialogTheme" parent="Theme.Design.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
+    </style>
+
+    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@color/transparent</item>
+    </style>
+    <style name="Theme.KalariLab.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.KalariLab.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.KalariLab.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+</resources>

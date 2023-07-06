@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:fillViewport="true">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/KalariLabMain"
+    tools:context=".Activities.LogInActivity">
+
+
+
+    <ImageView
+        android:layout_width="@dimen/logo_width"
+        android:layout_height="@dimen/logo_height"
+        android:src="@drawable/kalari_logo"
+        app:layout_constraintStart_toStartOf="@id/gl_logo_h"
+        app:layout_constraintTop_toBottomOf="@id/gl_logo_h" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_general_v"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.04" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_general_v1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.96" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_logo_h"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.01" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_medium"
+        android:text="@string/otherOptionsForLogIn"
+        android:textColor="@color/text_input_box_hint"
+        android:textSize="@dimen/text_size"
+        app:layout_constraintBottom_toTopOf="@id/gl_optionsText_h"
+        app:layout_constraintStart_toStartOf="@id/gl_general_v" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_optionsText_h"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.21" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_loginOptionsLowerBorder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.36" />
+
+
+    <com.google.android.material.button.MaterialButton
+
+        android:id="@+id/signInGmail"
+        style="@style/registerButtonStyle"
+        android:layout_width="0dp"
+
+        android:layout_height="0dp"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="@color/transparent"
+        app:cornerRadius="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/gl_loginOptionsLowerBorder"
+
+        app:layout_constraintEnd_toStartOf="@+id/gl_googleBtn1"
+        app:layout_constraintStart_toStartOf="@id/gl_googleBtn"
+        app:layout_constraintTop_toBottomOf="@id/gl_optionsText_h" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:translationZ="2dp"
+        app:layout_constraintBottom_toBottomOf="@id/signInGmail"
+        app:layout_constraintEnd_toEndOf="@id/signInGmail"
+        app:layout_constraintStart_toStartOf="@id/signInGmail"
+        app:layout_constraintTop_toTopOf="@id/signInGmail" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editTextUserNameParent"
+        style="@style/LoggingTextInputLayoutStyle"
+        android:backgroundTint="@color/KalariLabMain"
+        android:digits="@string/ASCII"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:fontFamily="@font/roboto_medium"
+        android:hint="@string/email"
+        android:importantForAutofill="no"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toStartOf="@id/gl_general_v1"
+        app:layout_constraintStart_toStartOf="@+id/gl_general_v"
+        app:layout_constraintTop_toBottomOf="@+id/gl_editTexts_upperLine">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextUserName"
+            style="@style/LoggingTextInputLayoutStyle"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/roboto_medium"
+            android:singleLine="true" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_editTexts_upperLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.36" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editTextPasswordParent"
+        style="@style/LoggingTextInputLayoutStyle"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/KalariLabMain"
+        android:digits="@string/ASCII"
+        android:fontFamily="@font/roboto_medium"
+        android:hint="@string/password_field"
+        android:importantForAutofill="no"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toStartOf="@id/gl_general_v1"
+        app:layout_constraintStart_toStartOf="@+id/gl_general_v"
+        app:layout_constraintTop_toBottomOf="@+id/editTextUserNameParent"
+        app:passwordToggleEnabled="true"
+
+        app:passwordToggleTint="@color/KalariLAbSecondary"
+
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextPassword"
+            style="@style/LoggingTextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:fontFamily="@font/roboto_medium"
+            android:inputType="textPassword"
+            android:singleLine="true" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+<Button
+    android:id="@+id/forgotPassword"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/KalariLabMain"
+    android:text="@string/forgot_password"
+    app:layout_constraintTop_toBottomOf="@id/editTextPasswordParent"
+    app:layout_constraintStart_toStartOf="@id/gl_general_v"/>
+
+    <com.google.android.material.button.MaterialButton
+
+        android:id="@+id/LogIn"
+        style="@style/registerButtonStyle"
+        android:fontFamily="@font/roboto_medium"
+        android:text="@string/Log_in"
+        app:cornerRadius="15dp"
+        app:layout_constraintEnd_toStartOf="@id/gl_general_v1"
+        app:layout_constraintStart_toStartOf="@id/gl_general_v"
+        app:layout_constraintTop_toBottomOf="@+id/forgotPassword" />
+
+    <TextView
+        android:id="@+id/doNotHaveAnAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_medium"
+        android:text="@string/dontHaveAnAccount"
+        android:textColor="@color/text_input_box_hint"
+        app:layout_constraintEnd_toStartOf="@id/gl_general_v1"
+        app:layout_constraintStart_toStartOf="@id/gl_general_v"
+        app:layout_constraintTop_toBottomOf="@+id/LogIn" />
+
+
+    <Button
+        android:id="@+id/goToSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/KalariLabMain"
+
+        android:text="@string/sign_up"
+        app:layout_constraintEnd_toStartOf="@id/gl_general_v1"
+        app:layout_constraintStart_toStartOf="@id/gl_general_v"
+        app:layout_constraintTop_toBottomOf="@id/doNotHaveAnAccount" />
+
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_googleBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.35" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_googleBtn1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.65" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "971929259698",
+    "firebase_url": "https://kalarilab-85a4b-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "kalarilab-85a4b",
+    "storage_bucket": "kalarilab-85a4b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:971929259698:android:27249ec870195cb52583ab",
+        "android_client_info": {
+          "package_name": "com.example.kalarilab"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "971929259698-1t76lkk0nnbhj2lejvibavqei76httc3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kalarilab",
+            "certificate_hash": "786006f18e619fce8add71927331169cba141400"
+          }
+        },
+        {
+          "client_id": "971929259698-qgkcsltkmv66sn62571dqqb4ntoasc1r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIsqwCdHGd6NYqHb-5DVh2T-ler-tSw38"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "971929259698-qgkcsltkmv66sn62571dqqb4ntoasc1r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

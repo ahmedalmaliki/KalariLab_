@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+        <item
+            android:id="@+id/home_page"
+            android:enabled="true"
+            android:icon="@mipmap/home_white"
+            android:title=""/>
+
+        <item
+                android:id="@+id/levels_page"
+                android:enabled="true"
+                android:icon="@mipmap/lessons_white"
+                android:title=""/>
+
+        <item
+            android:id="@+id/premium_page"
+            android:enabled="true"
+            android:icon="@mipmap/premium_white"
+            android:title=""/>
+
+
+        <item
+            android:id="@+id/profile_page"
+            android:enabled="true"
+            android:icon="@mipmap/user_white"
+            android:title="" />
+
+</menu>

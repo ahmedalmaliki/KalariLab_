@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeRefresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+  <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+      android:layout_height="match_parent"
+      android:layout_width="match_parent"
+      android:fillViewport="true">
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="@color/KalariLabMain"
+      tools:context=".Fragments.ProfileFragment">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="-60dp"
+        app:cardBackgroundColor="@color/KalariLabMain"
+        app:cardCornerRadius="60dp"
+        app:layout_constraintBottom_toTopOf="@id/gl_cardViewLowerBorder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_cardViewLowerBorder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9" />
+
+
+    <TextView
+        android:id="@+id/profileHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:elevation="3dp"
+        android:text="@string/profile"
+        android:textAppearance="@style/TitleTextStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageButton
+        android:id="@+id/avatar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="40dp"
+        android:background="@color/transparent"
+        android:elevation="2dp"
+        app:layout_constraintBottom_toBottomOf="@+id/gl_profileImage_lowerBorder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profileHeader" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_profileImage_lowerBorder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_profileImage_v"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.33" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_profileImage_v1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.67" />
+
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:elevation="3dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gl_profileImage_lowerBorder" />
+
+    <TextView
+        android:id="@+id/bio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:elevation="3dp"
+        android:fontFamily="@font/roboto_regular"
+        android:gravity="center"
+        android:maxLength="100"
+        android:text=""
+        android:textColor="@color/lightGrey"
+        android:textSize="20sp"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toStartOf="@id/gl_bio_v1"
+        app:layout_constraintStart_toStartOf="@id/gl_bio_v"
+        app:layout_constraintTop_toBottomOf="@id/name" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_bio_v"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_bio_v1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+
+    <ImageButton
+        android:id="@+id/settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:elevation="2dp"
+        android:src="@drawable/settings_grey"
+        app:layout_constraintBottom_toBottomOf="@id/gl_cardViewLowerBorder"
+        app:layout_constraintEnd_toEndOf="@id/gl_bio_v1"
+        app:layout_constraintStart_toStartOf="@id/gl_bio_v"
+
+        app:layout_constraintTop_toBottomOf="@id/bio" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/avatarRBorder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/avatarLBorder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/avatarUBorder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/avatarLoBorder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <ImageView
+        android:id="@+id/hair"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="60dp"
+        android:src="@drawable/mh1"
+
+        app:layout_constraintEnd_toEndOf="@id/hairBorderR"
+        app:layout_constraintStart_toStartOf="@id/hairBorderL"
+        app:layout_constraintTop_toTopOf="@id/base" />
+
+    <ImageView
+        android:id="@+id/base"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:elevation="50dp"
+        android:src="@drawable/sbmc1"
+        app:layout_constraintBottom_toBottomOf="@id/avatarLoBorder"
+        app:layout_constraintEnd_toEndOf="@id/avatarRBorder"
+        app:layout_constraintStart_toStartOf="@id/avatarLBorder"
+        app:layout_constraintTop_toBottomOf="@id/avatarUBorder" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/hairBorderR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.6" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/hairBorderL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.4" />
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/avatarEdit"
+        app:layout_constraintTop_toBottomOf="@id/avatarUBorder"
+      app:layout_constraintStart_toStartOf="@id/hairBorderR"
+        android:src="@drawable/edit_info"
+        android:background="@color/transparent"
+      android:elevation="2dp"/>
+
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+  </androidx.core.widget.NestedScrollView>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

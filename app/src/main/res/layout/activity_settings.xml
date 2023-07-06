@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeRefresh"
+    tools:context=".Activities.Settings"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/KalariLabMain"
+    >
+<androidx.core.widget.NestedScrollView
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:fillViewport="true">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/KalariLabMain"
+        >
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_general_v"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.04" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_general_v1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.96" />
+
+        <TextView
+            android:id="@+id/personalInformation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/personal_information"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            app:layout_constraintStart_toStartOf="@id/gl_general_v"
+            app:layout_constraintTop_toBottomOf="@+id/editTexts_UpperBoarder" />
+
+
+        <TextView
+            android:id="@+id/fullNameTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/full_name"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@id/gl_secondaryVerticalBorder"
+            app:layout_constraintTop_toBottomOf="@+id/personalInformation" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editTextNameParent"
+            style="@style/personalInfoStyle"
+            android:layout_marginTop="5dp"
+            android:digits="@string/ASCII"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="@id/gl_general_v1"
+            app:layout_constraintStart_toStartOf="@id/gl_secondaryVerticalBorder"
+            app:layout_constraintTop_toBottomOf="@id/fullNameTitle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextName"
+                style="@style/personalInfoStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:maxLength="20"
+                android:singleLine="true" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/aboutMe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/about_me"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@id/gl_secondaryVerticalBorder"
+            app:layout_constraintTop_toBottomOf="@id/editTextNameParent" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editTextBioParent"
+            style="@style/personalInfoStyle"
+            android:layout_marginTop="5dp"
+            android:digits="@string/ASCII"
+            android:importantForAutofill="no"
+            app:counterEnabled="true"
+            app:counterMaxLength="100"
+            app:counterTextColor="@color/KalariLAbSecondary"
+            app:layout_constraintEnd_toEndOf="@id/gl_general_v1"
+            app:layout_constraintStart_toStartOf="@id/gl_secondaryVerticalBorder"
+            app:layout_constraintTop_toBottomOf="@id/aboutMe">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextBio"
+                style="@style/personalInfoStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="100" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.button.MaterialButton
+
+            android:id="@+id/birthDateButton"
+            style="@style/registerButtonStyle"
+            android:backgroundTint="@color/darkerGrey"
+            android:fontFamily="@font/roboto_medium"
+            android:onClick="openDatePicker"
+            android:text="@string/birth_date"
+            app:cornerRadius="15dp"
+            app:layout_constraintEnd_toStartOf="@id/gl_general_v1"
+            app:layout_constraintStart_toStartOf="@id/gl_secondaryVerticalBorder"
+            app:layout_constraintTop_toBottomOf="@id/editTextBioParent" />
+
+        <TextView
+            android:id="@+id/gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/Gender"
+
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@id/gl_secondaryVerticalBorder"
+            app:layout_constraintTop_toBottomOf="@id/birthDateButton" />
+
+        <Spinner
+            android:id="@+id/genderSpinner"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:backgroundTint="@color/KalariLAbSecondary"
+            android:entries="@array/genders"
+            app:layout_constraintEnd_toEndOf="@id/gl_general_v1"
+            app:layout_constraintStart_toStartOf="@id/gl_secondaryVerticalBorder"
+            app:layout_constraintTop_toBottomOf="@id/gender"
+
+            />
+
+        <TextView
+            android:id="@+id/security"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/security"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@id/gl_general_v"
+            app:layout_constraintTop_toBottomOf="@+id/genderSpinner" />
+        <com.google.android.material.button.MaterialButton
+
+            android:id="@+id/resetPasswordButton"
+            style="@style/registerButtonStyle"
+            android:backgroundTint="@color/darkerGrey"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/reset_password"
+            app:cornerRadius="15dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toStartOf="@id/gl_general_v1"
+            app:layout_constraintStart_toStartOf="@id/gl_secondaryVerticalBorder"
+            app:layout_constraintTop_toBottomOf="@id/security" />
+        <com.google.android.material.button.MaterialButton
+
+            android:id="@+id/signOutButton"
+            style="@style/registerButtonStyle"
+            android:backgroundTint="@color/darkerGrey"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/sign_out"
+            app:cornerRadius="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintEnd_toStartOf="@id/gl_general_v1"
+            app:layout_constraintStart_toStartOf="@id/gl_secondaryVerticalBorder"
+            app:layout_constraintTop_toBottomOf="@id/resetPasswordButton" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/editTexts_UpperBoarder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.08" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_secondaryVerticalBorder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.07"/>
+
+        <com.google.android.material.button.MaterialButton
+
+            android:id="@+id/panel"
+            style="@style/registerButtonStyle"
+            android:backgroundTint="@color/darkerGrey"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/admin_panel"
+            app:cornerRadius="15dp"
+            android:visibility="gone"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintEnd_toStartOf="@id/gl_general_v1"
+            app:layout_constraintStart_toStartOf="@id/gl_secondaryVerticalBorder"
+            app:layout_constraintTop_toBottomOf="@id/signOutButton"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
