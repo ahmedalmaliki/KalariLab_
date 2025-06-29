@@ -36,6 +36,7 @@ public class AdActivity extends AppCompatActivity {
     }
 
     private void loadAd() {
+
         AdRequest adRequest = new AdRequest.Builder().build();
 
         InterstitialAd.load(this,"ca-app-pub-3940256099942544/1033173712", adRequest,
