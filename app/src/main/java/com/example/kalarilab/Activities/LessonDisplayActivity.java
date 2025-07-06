@@ -302,15 +302,11 @@ public class LessonDisplayActivity extends AppCompatActivity {
         }catch (Exception e){
 
         }
-        moveToAdActivity();
+
         super.onStop();
     }
 
-    private void moveToAdActivity() {
-        Intent intent = new Intent(this, AdActivity.class);
-      
-        startActivity(intent);
-    }
+
 
 
     @Override

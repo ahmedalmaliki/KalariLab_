@@ -1,4 +1,4 @@
-package com.example.kalarilab;
+package com.example.kalarilab.Activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,7 +6,8 @@ import android.os.Bundle;
 
 import com.example.kalarilab.Activities.BaseActivity;
 import com.example.kalarilab.Activities.LogInActivity;
-import com.google.android.gms.ads.MobileAds;
+import com.example.kalarilab.R;
+//import com.google.android.gms.ads.MobileAds;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -18,7 +19,7 @@ public class SplashScreenActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initMobileAds();
+        //initMobileAds();
 
         setContentView(R.layout.activity_splash_screen);
         if (!isTaskRoot()) {
@@ -31,16 +32,16 @@ public class SplashScreenActivity extends BaseActivity {
 
     }
 
-    private void initMobileAds() {
-
-        Thread adsInitThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                MobileAds.initialize(getApplicationContext());
-            }
-        });
-        adsInitThread.run();
-    }
+//    private void initMobileAds() {
+//
+//        Thread adsInitThread = new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                MobileAds.initialize(getApplicationContext());
+//            }
+//        });
+//        adsInitThread.run();
+//    }
 
     private void initHooks() {
         context = this;

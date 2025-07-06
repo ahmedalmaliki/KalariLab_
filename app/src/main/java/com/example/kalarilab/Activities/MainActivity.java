@@ -105,7 +105,7 @@ public class MainActivity extends BaseActivity {
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         navigationViewColorStateList = new ColorStateList(states, colors);
         viewPager = findViewById(R.id.viewPager);
-        viewPager.setOffscreenPageLimit(4);
+        viewPager.setOffscreenPageLimit(3);
         fragmentAdapter = new FragmentAdapter(getSupportFragmentManager(), this);
         sessionManagement  = new SessionManagement(this);
     }
@@ -138,13 +138,10 @@ public class MainActivity extends BaseActivity {
 
                     break;
                 case R.id.profile_page:
-                    viewPager.setCurrentItem(3);
-
-                    break;
-                case R.id.premium_page:
-
                     viewPager.setCurrentItem(2);
+
                     break;
+
 
                 case R.id.levels_page:
 

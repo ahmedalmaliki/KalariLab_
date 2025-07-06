@@ -22,6 +22,7 @@ import com.example.kalarilab.KalariLabUtils;
 import com.example.kalarilab.R;
 import com.example.kalarilab.SessionManagement;
 import com.example.kalarilab.Models.AuthModel;
+import com.example.kalarilab.Utils;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -156,6 +157,7 @@ public class ProfileInfoActivity extends BaseActivity implements View.OnClickLis
 
 
     private void Register() {
+        Utils.LockGlobalScreen(this);
         authModel = (AuthModel) getIntent().getSerializableExtra("authModelObject");
         authModel.setGender( kalariLabUtils.getGenderFromInt(genderSpinner.getSelectedItemPosition()));
         authModel.setBirthdate( birthdate);
@@ -177,6 +179,7 @@ public class ProfileInfoActivity extends BaseActivity implements View.OnClickLis
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     progressBar.setVisibility(View.GONE);
+                                    Utils.UnlockGlobalScreen(ProfileInfoActivity.this);
                                     if (task.isSuccessful()) {
                                         createSession();
                                         sendVerificationEmail();
@@ -187,6 +190,7 @@ public class ProfileInfoActivity extends BaseActivity implements View.OnClickLis
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
+                                    Utils.UnlockGlobalScreen(ProfileInfoActivity.this);
                                     moveToRegisterActivity();
 
                                 }
@@ -196,6 +200,7 @@ public class ProfileInfoActivity extends BaseActivity implements View.OnClickLis
 
                         }
                         else {
+                            Utils.UnlockGlobalScreen(ProfileInfoActivity.this);
                             setAlertDialog( task.getException().getMessage(), "emailAlreadyInUse", "Authentication Error!" );
                         }
 

@@ -127,7 +127,7 @@ public class LevelsFragment extends Fragment {
         X = displayMetrics.widthPixels;
         sessionManagement = new SessionManagement(getActivity());
         avatar = view.findViewById(R.id.avatar);
-        checkIfLocked();
+       // checkIfLocked();
         authViewModel = new AuthViewModel();
         authViewModel.setActivity(getActivity());
         try {

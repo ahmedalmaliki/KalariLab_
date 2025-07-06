@@ -37,11 +37,11 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 
 
 public class Register extends BaseActivity implements View.OnClickListener {
@@ -51,7 +51,7 @@ public class Register extends BaseActivity implements View.OnClickListener {
     // the current authentication method is carried
 
     private static final String TAG = "authDebug";
-    private Button goToSignInBtn, registerBtn, signInGmailBtn, TandSBtn;
+    private Button goToSignInBtn, registerBtn, signUpGmailBtn, TandSBtn;
     private EditText  emailEntry, passwordEntry, fullNameEntry;
     private ProgressBar progressBar;
     private TextInputLayout emailEntryParent, passwordEntryParent;
@@ -116,7 +116,7 @@ public class Register extends BaseActivity implements View.OnClickListener {
 
     private void bindings() {
         goToSignInBtn.setOnClickListener(this);
-        signInGmailBtn.setOnClickListener(this);
+        signUpGmailBtn.setOnClickListener(this);
         registerBtn.setOnClickListener(this);
         emailEntryParent.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -167,7 +167,7 @@ public class Register extends BaseActivity implements View.OnClickListener {
         progressBar = findViewById(R.id.progressBar);
         emailEntryParent = findViewById(R.id.editTextEmailParent);
         passwordEntryParent = findViewById(R.id.editTextPasswordParent);
-        signInGmailBtn = findViewById(R.id.signInGmail);
+        signUpGmailBtn = findViewById(R.id.signUpGmail);
         sessionManagement = new SessionManagement(Register.this);
         warningTextEmail = findViewById(R.id.warningTextEmail);
         warningTextPassword = findViewById(R.id.warningTextPassword);
@@ -195,7 +195,7 @@ public class Register extends BaseActivity implements View.OnClickListener {
                     e.printStackTrace();
                 }
                 break;
-            case R.id.signInGmail:
+            case R.id.signUpGmail:
 
                 oneTapSignInGoogle();
                 progressBar.setVisibility(View.VISIBLE);
@@ -233,6 +233,7 @@ public class Register extends BaseActivity implements View.OnClickListener {
                                     result.getPendingIntent().getIntentSender(), REQ_ONE_TAP,
                                     null, 0, 0, 0);
                         } catch (IntentSender.SendIntentException e) {
+                            Log.e(TAG, Objects.requireNonNull(e.getMessage()));
 
                         }
                     }

@@ -19,6 +19,7 @@ import androidx.annotation.Nullable;
 import com.example.kalarilab.R;
 import com.example.kalarilab.SessionManagement;
 import com.example.kalarilab.Models.AuthModel;
+import com.example.kalarilab.Utils;
 import com.google.android.gms.auth.api.identity.BeginSignInRequest;
 import com.google.android.gms.auth.api.identity.BeginSignInResult;
 import com.google.android.gms.auth.api.identity.Identity;
@@ -43,7 +44,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Locale;
 import java.util.Objects;
@@ -151,7 +151,7 @@ public class LogInActivity extends BaseActivity implements View.OnClickListener 
         sessionManagement = new SessionManagement(LogInActivity.this);
         logInButt = findViewById(R.id.LogIn);
         goToSignUpButton = findViewById(R.id.goToSignUp);
-        signInGmail = findViewById(R.id.signInGmail);
+        signInGmail = findViewById(R.id.signUpGmail);
         userNameEntry = findViewById(R.id.editTextUserName);
         passwordEntry = findViewById(R.id.editTextPassword);
         userNameParent = findViewById(R.id.editTextUserNameParent);
@@ -178,7 +178,7 @@ public class LogInActivity extends BaseActivity implements View.OnClickListener 
             case R.id.goToSignUp:
                 moveToSignUpActivity();
                 break;
-            case R.id.signInGmail:
+            case R.id.signUpGmail:
                 oneTapSignInGoogle();
                 progressBar.setVisibility(View.VISIBLE);
                 break;
@@ -238,7 +238,7 @@ public class LogInActivity extends BaseActivity implements View.OnClickListener 
     }
 
     private void oneTapSignInGoogle() {
-
+        Utils.LockGlobalScreen(this);
         oneTapClient.beginSignIn(signInRequest)
                 .addOnSuccessListener(this, new OnSuccessListener<BeginSignInResult>() {
                     @Override
@@ -261,6 +261,7 @@ public class LogInActivity extends BaseActivity implements View.OnClickListener 
                         progressBar.setVisibility(View.GONE);
                     }
                 });
+        Utils.UnlockGlobalScreen(this);
 
     }
 
@@ -302,8 +303,9 @@ public class LogInActivity extends BaseActivity implements View.OnClickListener 
 
     }
     private void startGmailLogin(String idToken, SignInCredential credential){
-        try {
+        Utils.LockGlobalScreen(this);
 
+        try {
 
             AuthCredential firebaseCredential = GoogleAuthProvider.getCredential(idToken, null);
             mAuth.signInWithCredential(firebaseCredential)
@@ -311,7 +313,7 @@ public class LogInActivity extends BaseActivity implements View.OnClickListener 
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-
+                                Utils.UnlockGlobalScreen(LogInActivity.this);
                                 // Sign in success, update UI with the signed-in user's information
                                 createSession(idToken);
                                 progressBar.setVisibility(View.GONE);
@@ -327,14 +329,18 @@ public class LogInActivity extends BaseActivity implements View.OnClickListener 
 
 
                             } else {
+                                Utils.UnlockGlobalScreen(LogInActivity.this);
+
                                 progressBar.setVisibility(View.VISIBLE);
 
                             }
                         }
                     });
         }catch (Exception e){
+            Utils.UnlockGlobalScreen(LogInActivity.this);
 
         }
+
     }
 
 
@@ -379,6 +385,7 @@ public class LogInActivity extends BaseActivity implements View.OnClickListener 
 
     }
     private void checkEnteredInfo(String finalUserName, String finalPassword) throws NoSuchAlgorithmException {
+        Utils.LockGlobalScreen(this);
         //this method checks the input if it is valid.
         final String userName = finalUserName.trim().toLowerCase(Locale.ROOT);
         final String password = finalPassword.trim().toLowerCase(Locale.ROOT);
@@ -394,15 +401,20 @@ public class LogInActivity extends BaseActivity implements View.OnClickListener 
 
             return;
         }
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
         logIn(userName, password);
     }
 
     private void logIn(String email, String password) throws NoSuchAlgorithmException {
+
         progressBar.setVisibility(View.VISIBLE);
-        sendInfoToFireBase(email, password);
-        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+        try {
+            sendInfoToFireBase(email, password);
+        }catch (Exception e){
+            Utils.UnlockGlobalScreen(this);
+            progressBar.setVisibility(View.GONE);
+        }
+
 
 
     }
@@ -424,13 +436,17 @@ public class LogInActivity extends BaseActivity implements View.OnClickListener 
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 sessionManagement.saveUserId(user.getUid());
                                 createSession(sessionManagement.returnUserId());
+                                Utils.UnlockGlobalScreen(LogInActivity.this);
                                 moveToMainActivity();
                             }else {
                                 setAlertDialog("Please verify your e-mail by clicking on the activation link sent to your email, you might find the e-mail in the spam folder!", "Activate your account!");
+                                Utils.UnlockGlobalScreen(LogInActivity.this);
+
                             }
 
                         } else {
                             progressBar.setVisibility(View.GONE);
+                            Utils.UnlockGlobalScreen(LogInActivity.this);
                             setAlertDialog(task.getException().getMessage(), "ConnectionError!");
 
                         }
@@ -440,6 +456,7 @@ public class LogInActivity extends BaseActivity implements View.OnClickListener 
 
 
     private void moveToMainActivity() {
+        Utils.UnlockGlobalScreen(this);
         //this method moves the UI to the main Activity.
         Intent intent = new Intent(LogInActivity.this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
@@ -593,6 +610,7 @@ public class LogInActivity extends BaseActivity implements View.OnClickListener 
                     .show();
         }
     }
+
     private String getEmailIndexingId(String email) {
         //This method returns the handle of the email to use it for indexing.
         StringBuilder index = new StringBuilder();

@@ -9,7 +9,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import com.example.kalarilab.Activities.MainActivity;
 
 public class FragmentAdapter extends FragmentPagerAdapter {
-    private static int NUM_ITEMS = 4;
+    private static int NUM_ITEMS = 3;
     private MainActivity mainActivity;
     private FragmentManager fragmentManager;
     public FragmentAdapter(FragmentManager fragmentManager, MainActivity mainActivity) {
@@ -33,10 +33,8 @@ public class FragmentAdapter extends FragmentPagerAdapter {
             case 1:
                 return LevelsFragment.newInstance("1", "Page #2");
             case 2:
-                return PremiumFragment.newInstance("2", "Page #3");
+                return ProfileFragment.newInstance("2", "Page #3");
 
-            case 3:
-                return ProfileFragment.newInstance("4", "Page #5");
 
             default:
                 return HomeFragment.newInstance("0", "Page #1");

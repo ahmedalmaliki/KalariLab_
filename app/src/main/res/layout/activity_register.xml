@@ -49,7 +49,7 @@
 
     <com.google.android.material.button.MaterialButton
 
-        android:id="@+id/signInGmail"
+        android:id="@+id/signUpGmail"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="30dp"
@@ -63,10 +63,10 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/signInGmail"
-        app:layout_constraintTop_toTopOf="@id/signInGmail"
-        app:layout_constraintEnd_toEndOf="@id/signInGmail"
-        app:layout_constraintBottom_toBottomOf="@id/signInGmail"
+        app:layout_constraintStart_toStartOf="@id/signUpGmail"
+        app:layout_constraintTop_toTopOf="@id/signUpGmail"
+        app:layout_constraintEnd_toEndOf="@id/signUpGmail"
+        app:layout_constraintBottom_toBottomOf="@id/signUpGmail"
         android:translationZ="2dp"/>
 
 
