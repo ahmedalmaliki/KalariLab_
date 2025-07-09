@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -27,6 +26,7 @@ import com.google.android.gms.auth.api.identity.SignInClient;
 import com.google.android.gms.auth.api.identity.SignInCredential;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.CommonStatusCodes;
+import com.google.android.gms.tasks.OnCanceledListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -151,7 +151,7 @@ public class LogInActivity extends BaseActivity implements View.OnClickListener 
         sessionManagement = new SessionManagement(LogInActivity.this);
         logInButt = findViewById(R.id.LogIn);
         goToSignUpButton = findViewById(R.id.goToSignUp);
-        signInGmail = findViewById(R.id.signUpGmail);
+        signInGmail = findViewById(R.id.signInGmail);
         userNameEntry = findViewById(R.id.editTextUserName);
         passwordEntry = findViewById(R.id.editTextPassword);
         userNameParent = findViewById(R.id.editTextUserNameParent);
@@ -178,7 +178,7 @@ public class LogInActivity extends BaseActivity implements View.OnClickListener 
             case R.id.goToSignUp:
                 moveToSignUpActivity();
                 break;
-            case R.id.signUpGmail:
+            case R.id.signInGmail:
                 oneTapSignInGoogle();
                 progressBar.setVisibility(View.VISIBLE);
                 break;
@@ -239,15 +239,18 @@ public class LogInActivity extends BaseActivity implements View.OnClickListener 
 
     private void oneTapSignInGoogle() {
         Utils.LockGlobalScreen(this);
+        progressBar.setVisibility(View.VISIBLE);
         oneTapClient.beginSignIn(signInRequest)
                 .addOnSuccessListener(this, new OnSuccessListener<BeginSignInResult>() {
                     @Override
                     public void onSuccess(BeginSignInResult result) {
                         try {
-                            progressBar.setVisibility(View.GONE);
+
                             startIntentSenderForResult(
                                     result.getPendingIntent().getIntentSender(), REQ_ONE_TAP,
                                     null, 0, 0, 0);
+                            progressBar.setVisibility(View.GONE);
+                            Utils.UnlockGlobalScreen(LogInActivity.this);
                         } catch (IntentSender.SendIntentException e) {
 
                         }
@@ -259,9 +262,23 @@ public class LogInActivity extends BaseActivity implements View.OnClickListener 
                         Log.d(TAG, e.getMessage());
                         setAlertDialog( "Too many attempts please try again later, please try again later!", "Too many attempts!" );
                         progressBar.setVisibility(View.GONE);
+                        Utils.UnlockGlobalScreen(LogInActivity.this);
+                    }
+                }).addOnCompleteListener(this, new OnCompleteListener<BeginSignInResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<BeginSignInResult> task) {
+//                        progressBar.setVisibility(View.GONE);
+
+
+                    }
+                }).addOnCanceledListener(this, new OnCanceledListener() {
+                    @Override
+                    public void onCanceled() {
+                        progressBar.setVisibility(View.GONE);
+                        Utils.UnlockGlobalScreen(LogInActivity.this);
+
                     }
                 });
-        Utils.UnlockGlobalScreen(this);
 
     }
 

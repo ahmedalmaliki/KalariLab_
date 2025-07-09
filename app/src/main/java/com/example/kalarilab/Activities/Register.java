@@ -18,6 +18,7 @@ import androidx.appcompat.app.AlertDialog;
 import com.example.kalarilab.R;
 import com.example.kalarilab.SessionManagement;
 import com.example.kalarilab.Models.AuthModel;
+import com.example.kalarilab.Utils;
 import com.google.android.gms.auth.api.identity.BeginSignInRequest;
 import com.google.android.gms.auth.api.identity.BeginSignInResult;
 import com.google.android.gms.auth.api.identity.Identity;
@@ -42,6 +43,8 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
+
+import okhttp3.internal.Util;
 
 
 public class Register extends BaseActivity implements View.OnClickListener {
@@ -167,7 +170,7 @@ public class Register extends BaseActivity implements View.OnClickListener {
         progressBar = findViewById(R.id.progressBar);
         emailEntryParent = findViewById(R.id.editTextEmailParent);
         passwordEntryParent = findViewById(R.id.editTextPasswordParent);
-        signUpGmailBtn = findViewById(R.id.signUpGmail);
+        signUpGmailBtn = findViewById(R.id.signInGmail);
         sessionManagement = new SessionManagement(Register.this);
         warningTextEmail = findViewById(R.id.warningTextEmail);
         warningTextPassword = findViewById(R.id.warningTextPassword);
@@ -195,7 +198,7 @@ public class Register extends BaseActivity implements View.OnClickListener {
                     e.printStackTrace();
                 }
                 break;
-            case R.id.signUpGmail:
+            case R.id.signInGmail:
 
                 oneTapSignInGoogle();
                 progressBar.setVisibility(View.VISIBLE);
@@ -221,6 +224,8 @@ public class Register extends BaseActivity implements View.OnClickListener {
     }
 
     private void oneTapSignInGoogle() {
+        Utils.LockGlobalScreen(this);
+        progressBar.setVisibility(View.VISIBLE);
         oneTapClient.beginSignIn(signInRequest)
                 .addOnSuccessListener(this, new OnSuccessListener<BeginSignInResult>() {
                     @Override
@@ -232,6 +237,8 @@ public class Register extends BaseActivity implements View.OnClickListener {
                             startIntentSenderForResult(
                                     result.getPendingIntent().getIntentSender(), REQ_ONE_TAP,
                                     null, 0, 0, 0);
+                            progressBar.setVisibility(View.GONE);
+                            Utils.UnlockGlobalScreen(Register.this);
                         } catch (IntentSender.SendIntentException e) {
                             Log.e(TAG, Objects.requireNonNull(e.getMessage()));
 
@@ -243,6 +250,7 @@ public class Register extends BaseActivity implements View.OnClickListener {
                     public void onFailure(@NonNull Exception e) {
                         setAlertDialog("Too many attempts please try again later", "Too many attempts!");
                         progressBar.setVisibility(View.GONE);
+                        Utils.UnlockGlobalScreen(Register.this);
 
 
                     }
