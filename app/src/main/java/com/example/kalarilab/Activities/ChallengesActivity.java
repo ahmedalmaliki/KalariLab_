@@ -134,10 +134,10 @@ public class ChallengesActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-//                        currUri = Uri.parse(snapshot.getValue().toString());
-//                        mediaItem = MediaItem.fromUri(currUri);
-//                        //runVid();
-//
+                        currUri = Uri.parse(snapshot.getValue().toString());
+                        mediaItem = MediaItem.fromUri(currUri);
+                        runVid();
+
 
                     }
 

@@ -10,6 +10,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -48,20 +49,20 @@ public class LevelsFragment extends Fragment {
     View view;
     RelativeLayout relativeLayout;
     ImageView lock, avatar;
-    Map<String, int[]> lessonsAreas = new HashMap();
     public static double Y;
     public static double X;
     MotionEvent motionEvent;
     int clickedLesson;
     int level;
     int challenge;
+    private static final double TOUCH_RADIUS = 0.04; // 2% padding
     private AuthViewModel authViewModel;
     private AuthModel authModel1;
     RecyclerView map_recyclerView;
     TiledImageAdapter tiledImageAdapter;
     final static String TAG = "MAPDEBUG";
     Map<Integer, Integer> lockedKalaries = new HashMap();
-
+    private GestureDetector gestureDetector;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -71,6 +72,7 @@ public class LevelsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
 
     public LevelsFragment() {
         // Required empty public constructor
@@ -100,11 +102,49 @@ public class LevelsFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+        }}
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            view = inflater.inflate(R.layout.fragment_levels, container, false);
+            initHooks(view);
+            observeData();
+            setupGestureDetector();
+            return view;
+
         }
+    private void setupGestureDetector() {
+        gestureDetector = new GestureDetector(getContext(), new GestureDetector.SimpleOnGestureListener() {
+            @Override
+            public boolean onSingleTapConfirmed(MotionEvent e) {
+                motionEvent = e;
+                handleClick();
+                return true;
+            }
+        });
 
-
+        map_recyclerView.setOnTouchListener((v, event) -> gestureDetector.onTouchEvent(event));
     }
 
+    private void handleClick() {
+        Log.d(TAG, "Tapped at: " + standardizedEventXCoordinates() + " , " + standardizedEventYCoordinates());
+
+        if (lessonBtnClicked()) {
+            moveToLessonsDisplayActivity();
+        } else if (challengeClicked()) {
+            Log.d(TAG, "challengeClicked");
+            sessionManagement.saveCurrLevel(level);
+            sessionManagement.saveCurrChallenge(challenge);
+            moveToChallengesActivity();
+        }
+    }
+    private double standardizedEventXCoordinates() {
+        return motionEvent.getX() / X;
+    }
+
+    private double standardizedEventYCoordinates() {
+        return motionEvent.getY() / Y;
+    }
     private void moveToLessonsDisplayActivity() {
         Intent intent = new Intent(getActivity(), LessonDisplayActivity.class);
         intent.putExtra("lesson", clickedLesson);
@@ -184,20 +224,7 @@ public class LevelsFragment extends Fragment {
 
 
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        // Inflate the layout for this fragment
-        view =  inflater.inflate(R.layout.fragment_levels, container, false);
-        initHooks(view);
-        observeData();
 
-        bindings();
-
-        return view;
-
-    }
 
 
 
@@ -222,11 +249,11 @@ public class LevelsFragment extends Fragment {
         return YCoordinateRange;
     }
     private  double[] getLessonTwoXCoordinateRange(){
-        double[] XCoordinateRange = {0.16, 0.215};
+        double[] XCoordinateRange = {0.75, 0.85};
         return XCoordinateRange;
     }
     private  double[] getLessonTwoYCoordinateRange(){
-        double[] YCoordinateRange = {0.31, 0.34};
+        double[] YCoordinateRange = {0.27, 0.34};
         return YCoordinateRange;
     }
     private  double[] getLessonThreeXCoordinateRange(){
@@ -238,43 +265,43 @@ public class LevelsFragment extends Fragment {
         return YCoordinateRange;
     }
     private  double[] getLessonFourXCoordinateRange(){
-        double[] XCoordinateRange = {0.4, 0.43};
+        double[] XCoordinateRange = {0.045, 0.17};
         return XCoordinateRange;
     }
     private  double[] getLessonFourYCoordinateRange(){
-        double[] YCoordinateRange = {0.27, 0.28};
+        double[] YCoordinateRange = {0.35, 0.47};
         return YCoordinateRange;
     }
     private  double[] getLessonFiveXCoordinateRange(){
-        double[] XCoordinateRange = {0.41, 0.425};
+        double[] XCoordinateRange = {0.55, 0.71};
         return XCoordinateRange;
     }
     private  double[] getLessonFiveYCoordinateRange(){
-        double[] YCoordinateRange = {0.34, 0.365};
+        double[] YCoordinateRange = {0.45, 0.58};
         return YCoordinateRange;
     }
     private  double[] getLessonSixXCoordinateRange(){
-        double[] XCoordinateRange = {0.25, 0.275};
+        double[] XCoordinateRange = {0.74, 0.85};
         return XCoordinateRange;
     }
     private  double[] getLessonSixYCoordinateRange(){
-        double[] YCoordinateRange = {0.37,0.39};
+        double[] YCoordinateRange = {0.62,0.67};
         return YCoordinateRange;
     }
     private  double[] getLessonSevenXCoordinateRange(){
-        double[] XCoordinateRange = {0.36,0.395};
+        double[] XCoordinateRange = {0.28,0.39};
         return XCoordinateRange;
     }
     private  double[] getLessonSevenYCoordinateRange(){
-        double[] YCoordinateRange = {0.425,0.44 };
+        double[] YCoordinateRange = {0.69,0.72 };
         return YCoordinateRange;
     }
     private  double[] getLessonEightXCoordinateRange(){
-        double[] XCoordinateRange = {0.48, 0.52};
+        double[] XCoordinateRange = {0.16, 0.23};
         return XCoordinateRange;
     }
     private  double[] getLessonEightYCoordinateRange(){
-        double[] YCoordinateRange = {0.41, 0.435};
+        double[] YCoordinateRange = {0.82, 0.87};
         return YCoordinateRange;
     }
     private  double[] getLessonNineXCoordinateRange(){
@@ -350,27 +377,27 @@ public class LevelsFragment extends Fragment {
         return XCoordinateRange;
     }
     private  double[] getChallengeTwoXCoordinateRange(){
-        double[] XCoordinateRange = {0.445, 0.465};
+        double[] XCoordinateRange = {0.31, 0.41};
         return XCoordinateRange;
     }
     private  double[] getChallengeTwoYCoordinateRange(){
-        double[] XCoordinateRange = {0.31, 0.33};
+        double[] XCoordinateRange = {0.57, 0.59};
         return XCoordinateRange;
     }
     private  double[] getChallengeThreeXCoordinateRange(){
-        double[] XCoordinateRange = {0.295, 0.32};
+        double[] XCoordinateRange = {0.48, 0.59};
         return XCoordinateRange;
     }
     private  double[] getChallengeThreeYCoordinateRange(){
-        double[] XCoordinateRange = {0.39, 0.405};
+        double[] XCoordinateRange = {0.72, 0.76};
         return XCoordinateRange;
     }
     private  double[] getChallengeFourXCoordinateRange(){
-        double[] XCoordinateRange = {0.51, 0.545};
+        double[] XCoordinateRange = {0.35, 0.44};
         return XCoordinateRange;
     }
     private  double[] getChallengeFourYCoordinateRange(){
-        double[] XCoordinateRange = {0.365, 0.385};
+        double[] XCoordinateRange = {0.88, 0.94};
         return XCoordinateRange;
     }   private  double[] getChallengeFiveXCoordinateRange(){
         double[] XCoordinateRange = {0.635, 0.65};
@@ -405,27 +432,7 @@ public class LevelsFragment extends Fragment {
     }
 
 
-    private void bindings() {
 
-        map_recyclerView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                motionEvent = event;
-                Log.d(TAG, String.valueOf(motionEvent.getX()/X)+ ":"+ motionEvent.getY()/Y);
-                if (lessonBtnClicked()){
-                    moveToLessonsDisplayActivity();
-                }else if(challengeClicked()){
-                    Log.d(TAG, "challengeClicked");
-                    sessionManagement.saveCurrLevel(level);
-                    sessionManagement.saveCurrChallenge(challenge);
-                    moveToChallengesActivity();
-                }
-                return false;
-            }
-        });
-
-
-    }
 
     private void moveToChallengesActivity() {
         Intent intent = new Intent(getActivity(), ChallengesActivity.class);
@@ -435,67 +442,72 @@ public class LevelsFragment extends Fragment {
         startActivity(intent);
 
     }
+    private boolean isWithinRange(double value, double min, double max) {
+        return value >= (min - TOUCH_RADIUS) && value <= (max + TOUCH_RADIUS);
+    }
+
 
     private boolean challengeClicked() {
         return c1CoordinatesAreRight() || c2CoordinatesAreRight() || c3CoordinatesAreRight()|| c4CoordinatesAreRight()|| c5CoordinatesAreRight()||
                 c6CoordinatesAreRight() || c7CoordinatesAreRight() || c8CoordinatesAreRight();
     }
 
-    private boolean c8CoordinatesAreRight() {
-        challenge = 8;
+    private boolean c1CoordinatesAreRight() {
+        challenge = 1;
         level = 1;
-        return (standardizedEventXCoordinates() >= getChallengeEightXCoordinateRange()[0] && standardizedEventXCoordinates() <= getChallengeEightXCoordinateRange()[1]) && (standardizedEventYCoordinates() >= getChallengeEightYCoordinateRange()[0] && standardizedEventYCoordinates() <= getChallengeEightYCoordinateRange()[1]);
-
-    }
-
-    private boolean c7CoordinatesAreRight() {
-        challenge = 7;
-        level = 1;
-        return (standardizedEventXCoordinates() >= getChallengeSevenXCoordinateRange()[0] && standardizedEventXCoordinates() <= getChallengeSevenXCoordinateRange()[1]) && (standardizedEventYCoordinates() >= getChallengeSevenYCoordinateRange()[0] && standardizedEventYCoordinates() <= getChallengeSevenYCoordinateRange()[1]);
-
-    }
-
-    private boolean c6CoordinatesAreRight() {
-        challenge = 6;
-        level = 1;
-        return (standardizedEventXCoordinates() >= getChallengeSixXCoordinateRange()[0] && standardizedEventXCoordinates() <= getChallengeSixXCoordinateRange()[1]) && (standardizedEventYCoordinates() >= getChallengeSixYCoordinateRange()[0] && standardizedEventYCoordinates() <= getChallengeSixYCoordinateRange()[1]);
-
-    }
-
-    private boolean c5CoordinatesAreRight() {
-        challenge = 5;
-        level = 1;
-        return (standardizedEventXCoordinates() >= getChallengeFiveXCoordinateRange()[0] && standardizedEventXCoordinates() <= getChallengeFiveXCoordinateRange()[1]) && (standardizedEventYCoordinates() >= getChallengeFiveYCoordinateRange()[0] && standardizedEventYCoordinates() <= getChallengeFiveYCoordinateRange()[1]);
-
-    }
-
-    private boolean c4CoordinatesAreRight() {
-        challenge = 4;
-        level = 1;
-        return (standardizedEventXCoordinates() >= getChallengeFourXCoordinateRange()[0] && standardizedEventXCoordinates() <= getChallengeFourXCoordinateRange()[1]) && (standardizedEventYCoordinates() >= getChallengeFourYCoordinateRange()[0] && standardizedEventYCoordinates() <= getChallengeFourYCoordinateRange()[1]);
-
-    }
-
-    private boolean c3CoordinatesAreRight() {
-        challenge = 3;
-        level = 1;
-        return (standardizedEventXCoordinates() >= getChallengeThreeXCoordinateRange()[0] && standardizedEventXCoordinates() <= getChallengeThreeXCoordinateRange()[1]) && (standardizedEventYCoordinates() >= getChallengeThreeYCoordinateRange()[0] && standardizedEventYCoordinates() <= getChallengeThreeYCoordinateRange()[1]);
-
+        return isWithinRange(standardizedEventXCoordinates(), getChallengeOneXCoordinateRange()[0], getChallengeOneXCoordinateRange()[1]) &&
+                isWithinRange(standardizedEventYCoordinates(), getChallengeOneYCoordinateRange()[0], getChallengeOneYCoordinateRange()[1]);
     }
 
     private boolean c2CoordinatesAreRight() {
         challenge = 2;
         level = 1;
-        return (standardizedEventXCoordinates() >= getChallengeTwoXCoordinateRange()[0] && standardizedEventXCoordinates() <= getChallengeTwoXCoordinateRange()[1]) && (standardizedEventYCoordinates() >= getChallengeTwoYCoordinateRange()[0] && standardizedEventYCoordinates() <= getChallengeTwoYCoordinateRange()[1]);
-
+        return isWithinRange(standardizedEventXCoordinates(), getChallengeTwoXCoordinateRange()[0], getChallengeTwoXCoordinateRange()[1]) &&
+                isWithinRange(standardizedEventYCoordinates(), getChallengeTwoYCoordinateRange()[0], getChallengeTwoYCoordinateRange()[1]);
     }
 
-    private boolean c1CoordinatesAreRight() {
-        challenge = 1;
+    private boolean c3CoordinatesAreRight() {
+        challenge = 3;
         level = 1;
-        return (standardizedEventXCoordinates() >= getChallengeOneXCoordinateRange()[0] && standardizedEventXCoordinates() <= getChallengeOneXCoordinateRange()[1]) && (standardizedEventYCoordinates() >= getChallengeOneYCoordinateRange()[0] && standardizedEventYCoordinates() <= getChallengeOneYCoordinateRange()[1]);
-
+        return isWithinRange(standardizedEventXCoordinates(), getChallengeThreeXCoordinateRange()[0], getChallengeThreeXCoordinateRange()[1]) &&
+                isWithinRange(standardizedEventYCoordinates(), getChallengeThreeYCoordinateRange()[0], getChallengeThreeYCoordinateRange()[1]);
     }
+
+    private boolean c4CoordinatesAreRight() {
+        challenge = 4;
+        level = 1;
+        return isWithinRange(standardizedEventXCoordinates(), getChallengeFourXCoordinateRange()[0], getChallengeFourXCoordinateRange()[1]) &&
+                isWithinRange(standardizedEventYCoordinates(), getChallengeFourYCoordinateRange()[0], getChallengeFourYCoordinateRange()[1]);
+    }
+
+    private boolean c5CoordinatesAreRight() {
+        challenge = 5;
+        level = 1;
+        return isWithinRange(standardizedEventXCoordinates(), getChallengeFiveXCoordinateRange()[0], getChallengeFiveXCoordinateRange()[1]) &&
+                isWithinRange(standardizedEventYCoordinates(), getChallengeFiveYCoordinateRange()[0], getChallengeFiveYCoordinateRange()[1]);
+    }
+
+    private boolean c6CoordinatesAreRight() {
+        challenge = 6;
+        level = 1;
+        return isWithinRange(standardizedEventXCoordinates(), getChallengeSixXCoordinateRange()[0], getChallengeSixXCoordinateRange()[1]) &&
+                isWithinRange(standardizedEventYCoordinates(), getChallengeSixYCoordinateRange()[0], getChallengeSixYCoordinateRange()[1]);
+    }
+
+    private boolean c7CoordinatesAreRight() {
+        challenge = 7;
+        level = 1;
+        return isWithinRange(standardizedEventXCoordinates(), getChallengeSevenXCoordinateRange()[0], getChallengeSevenXCoordinateRange()[1]) &&
+                isWithinRange(standardizedEventYCoordinates(), getChallengeSevenYCoordinateRange()[0], getChallengeSevenYCoordinateRange()[1]);
+    }
+
+    private boolean c8CoordinatesAreRight() {
+        challenge = 8;
+        level = 1;
+        return isWithinRange(standardizedEventXCoordinates(), getChallengeEightXCoordinateRange()[0], getChallengeEightXCoordinateRange()[1]) &&
+                isWithinRange(standardizedEventYCoordinates(), getChallengeEightYCoordinateRange()[0], getChallengeEightYCoordinateRange()[1]);
+    }
+
 
 
     private boolean lessonBtnClicked() {
@@ -506,88 +518,109 @@ public class LevelsFragment extends Fragment {
     private boolean l1CoordinatesAreRight() {
         clickedLesson = 1;
         level = 1;
-        return (standardizedEventXCoordinates() >= getLessonOneXCoordinateRange()[0] && standardizedEventXCoordinates() <= getLessonOneXCoordinateRange()[1]) && (standardizedEventYCoordinates() >= getLessonOneYCoordinateRange()[0] && standardizedEventYCoordinates() <= getLessonOneYCoordinateRange()[1]);
+        return isWithinRange(standardizedEventXCoordinates(), getLessonOneXCoordinateRange()[0], getLessonOneXCoordinateRange()[1]) &&
+                isWithinRange(standardizedEventYCoordinates(), getLessonOneYCoordinateRange()[0], getLessonOneYCoordinateRange()[1]);
     }
+
     private boolean l2CoordinatesAreRight() {
         clickedLesson = 2;
         level = 1;
-        return (standardizedEventXCoordinates() >= getLessonTwoXCoordinateRange()[0] && standardizedEventXCoordinates() <= getLessonTwoXCoordinateRange()[1]) && (standardizedEventYCoordinates() >= getLessonTwoYCoordinateRange()[0] && standardizedEventYCoordinates() <= getLessonTwoYCoordinateRange()[1]);
+        return isWithinRange(standardizedEventXCoordinates(), getLessonTwoXCoordinateRange()[0], getLessonTwoXCoordinateRange()[1]) &&
+                isWithinRange(standardizedEventYCoordinates(), getLessonTwoYCoordinateRange()[0], getLessonTwoYCoordinateRange()[1]);
     }
+
     private boolean l3CoordinatesAreRight() {
         clickedLesson = 3;
         level = 1;
-        return (standardizedEventXCoordinates() >= getLessonThreeXCoordinateRange()[0] && standardizedEventXCoordinates() <= getLessonThreeXCoordinateRange()[1]) && (standardizedEventYCoordinates() >= getLessonThreeYCoordinateRange()[0] && standardizedEventYCoordinates() <= getLessonThreeYCoordinateRange()[1]);
-    }  private boolean l4CoordinatesAreRight() {
+        return isWithinRange(standardizedEventXCoordinates(), getLessonThreeXCoordinateRange()[0], getLessonThreeXCoordinateRange()[1]) &&
+                isWithinRange(standardizedEventYCoordinates(), getLessonThreeYCoordinateRange()[0], getLessonThreeYCoordinateRange()[1]);
+    }
+    private boolean l4CoordinatesAreRight() {
         clickedLesson = 4;
         level = 1;
-        return (standardizedEventXCoordinates() >= getLessonFourXCoordinateRange()[0] && standardizedEventXCoordinates() <= getLessonFourXCoordinateRange()[1]) && (standardizedEventYCoordinates() >= getLessonFourYCoordinateRange()[0] && standardizedEventYCoordinates() <= getLessonFourYCoordinateRange()[1]);
+        return isWithinRange(standardizedEventXCoordinates(), getLessonFourXCoordinateRange()[0], getLessonFourXCoordinateRange()[1]) &&
+                isWithinRange(standardizedEventYCoordinates(), getLessonFourYCoordinateRange()[0], getLessonFourYCoordinateRange()[1]);
     }
+
     private boolean l5CoordinatesAreRight() {
         clickedLesson = 5;
         level = 1;
-        return (standardizedEventXCoordinates() >= getLessonFiveXCoordinateRange()[0] && standardizedEventXCoordinates() <= getLessonFiveXCoordinateRange()[1]) && (standardizedEventYCoordinates() >= getLessonFiveYCoordinateRange()[0] && standardizedEventYCoordinates() <= getLessonFiveYCoordinateRange()[1]);
+        return isWithinRange(standardizedEventXCoordinates(), getLessonFiveXCoordinateRange()[0], getLessonFiveXCoordinateRange()[1]) &&
+                isWithinRange(standardizedEventYCoordinates(), getLessonFiveYCoordinateRange()[0], getLessonFiveYCoordinateRange()[1]);
     }
+
     private boolean l6CoordinatesAreRight() {
         clickedLesson = 6;
         level = 1;
-        return (standardizedEventXCoordinates() >= getLessonSixXCoordinateRange()[0] && standardizedEventXCoordinates() <= getLessonSixXCoordinateRange()[1]) && (standardizedEventYCoordinates() >= getLessonSixYCoordinateRange()[0] && standardizedEventYCoordinates() <= getLessonSixYCoordinateRange()[1]);
+        return isWithinRange(standardizedEventXCoordinates(), getLessonSixXCoordinateRange()[0], getLessonSixXCoordinateRange()[1]) &&
+                isWithinRange(standardizedEventYCoordinates(), getLessonSixYCoordinateRange()[0], getLessonSixYCoordinateRange()[1]);
     }
+
     private boolean l7CoordinatesAreRight() {
         clickedLesson = 7;
         level = 1;
-        return (standardizedEventXCoordinates() >= getLessonSevenXCoordinateRange()[0] && standardizedEventXCoordinates() <= getLessonSevenXCoordinateRange()[1]) && (standardizedEventYCoordinates() >= getLessonSevenYCoordinateRange()[0] && standardizedEventYCoordinates() <= getLessonSevenYCoordinateRange()[1]);
+        return isWithinRange(standardizedEventXCoordinates(), getLessonSevenXCoordinateRange()[0], getLessonSevenXCoordinateRange()[1]) &&
+                isWithinRange(standardizedEventYCoordinates(), getLessonSevenYCoordinateRange()[0], getLessonSevenYCoordinateRange()[1]);
     }
+
     private boolean l8CoordinatesAreRight() {
         clickedLesson = 8;
         level = 1;
-        return (standardizedEventXCoordinates() >= getLessonEightXCoordinateRange()[0] && standardizedEventXCoordinates() <= getLessonEightXCoordinateRange()[1]) && (standardizedEventYCoordinates() >= getLessonEightYCoordinateRange()[0] && standardizedEventYCoordinates() <= getLessonEightYCoordinateRange()[1]);
+        return isWithinRange(standardizedEventXCoordinates(), getLessonEightXCoordinateRange()[0], getLessonEightXCoordinateRange()[1]) &&
+                isWithinRange(standardizedEventYCoordinates(), getLessonEightYCoordinateRange()[0], getLessonEightYCoordinateRange()[1]);
     }
+
     private boolean l9CoordinatesAreRight() {
         clickedLesson = 9;
         level = 1;
-        return (standardizedEventXCoordinates() >= getLessonNineXCoordinateRange()[0] && standardizedEventXCoordinates() <= getLessonNineXCoordinateRange()[1]) && (standardizedEventYCoordinates() >= getLessonNineYCoordinateRange()[0] && standardizedEventYCoordinates() <= getLessonNineYCoordinateRange()[1]);
+        return isWithinRange(standardizedEventXCoordinates(), getLessonNineXCoordinateRange()[0], getLessonNineXCoordinateRange()[1]) &&
+                isWithinRange(standardizedEventYCoordinates(), getLessonNineYCoordinateRange()[0], getLessonNineYCoordinateRange()[1]);
     }
+
     private boolean l10CoordinatesAreRight() {
         clickedLesson = 10;
         level = 1;
-        return (standardizedEventXCoordinates() >= getLessonTenXCoordinateRange()[0] && standardizedEventXCoordinates() <= getLessonTenXCoordinateRange()[1]) && (standardizedEventYCoordinates() >= getLessonTenYCoordinateRange()[0] && standardizedEventYCoordinates() <= getLessonTenYCoordinateRange()[1]);
+        return isWithinRange(standardizedEventXCoordinates(), getLessonTenXCoordinateRange()[0], getLessonTenXCoordinateRange()[1]) &&
+                isWithinRange(standardizedEventYCoordinates(), getLessonTenYCoordinateRange()[0], getLessonTenYCoordinateRange()[1]);
     }
+
     private boolean l11CoordinatesAreRight() {
         clickedLesson = 11;
         level = 1;
-        return (standardizedEventXCoordinates() >= getLessonElevenXCoordinateRange()[0] && standardizedEventXCoordinates() <= getLessonElevenXCoordinateRange()[1]) && (standardizedEventYCoordinates() >= getLessonElevenYCoordinateRange()[0] && standardizedEventYCoordinates() <= getLessonElevenYCoordinateRange()[1]);
+        return isWithinRange(standardizedEventXCoordinates(), getLessonElevenXCoordinateRange()[0], getLessonElevenXCoordinateRange()[1]) &&
+                isWithinRange(standardizedEventYCoordinates(), getLessonElevenYCoordinateRange()[0], getLessonElevenYCoordinateRange()[1]);
     }
+
     private boolean l12CoordinatesAreRight() {
         clickedLesson = 12;
         level = 1;
-        return (standardizedEventXCoordinates() >= getLessonTwelveXCoordinateRange()[0] && standardizedEventXCoordinates() <= getLessonTwelveXCoordinateRange()[1]) && (standardizedEventYCoordinates() >= getLessonTwelveYCoordinateRange()[0] && standardizedEventYCoordinates() <= getLessonTwelveYCoordinateRange()[1]);
+        return isWithinRange(standardizedEventXCoordinates(), getLessonTwelveXCoordinateRange()[0], getLessonTwelveXCoordinateRange()[1]) &&
+                isWithinRange(standardizedEventYCoordinates(), getLessonTwelveYCoordinateRange()[0], getLessonTwelveYCoordinateRange()[1]);
     }
+
     private boolean l13CoordinatesAreRight() {
         clickedLesson = 13;
         level = 1;
-        return (standardizedEventXCoordinates() >= getLessonThirteenXCoordinateRange()[0] && standardizedEventXCoordinates() <= getLessonThirteenXCoordinateRange()[1]) && (standardizedEventYCoordinates() >= getLessonThirteenYCoordinateRange()[0] && standardizedEventYCoordinates() <= getLessonThirteenYCoordinateRange()[1]);
+        return isWithinRange(standardizedEventXCoordinates(), getLessonThirteenXCoordinateRange()[0], getLessonThirteenXCoordinateRange()[1]) &&
+                isWithinRange(standardizedEventYCoordinates(), getLessonThirteenYCoordinateRange()[0], getLessonThirteenYCoordinateRange()[1]);
     }
+
     private boolean l14CoordinatesAreRight() {
         clickedLesson = 14;
         level = 1;
-        return (standardizedEventXCoordinates() >= getLessonFourteenXCoordinateRange()[0] && standardizedEventXCoordinates() <= getLessonFourteenXCoordinateRange()[1]) && (standardizedEventYCoordinates() >= getLessonFourteenYCoordinateRange()[0] && standardizedEventYCoordinates() <= getLessonFourteenYCoordinateRange()[1]);
+        return isWithinRange(standardizedEventXCoordinates(), getLessonFourteenXCoordinateRange()[0], getLessonFourteenXCoordinateRange()[1]) &&
+                isWithinRange(standardizedEventYCoordinates(), getLessonFourteenYCoordinateRange()[0], getLessonFourteenYCoordinateRange()[1]);
     }
+
     private boolean l15CoordinatesAreRight() {
         clickedLesson = 15;
         level = 1;
-        return (standardizedEventXCoordinates() >= getLessonFifteenXCoordinateRange()[0] && standardizedEventXCoordinates() <= getLessonFifteenXCoordinateRange()[1]) && (standardizedEventYCoordinates() >= getLessonFifteenYCoordinateRange()[0] && standardizedEventYCoordinates() <= getLessonFifteenYCoordinateRange()[1]);
+        return isWithinRange(standardizedEventXCoordinates(), getLessonFifteenXCoordinateRange()[0], getLessonFifteenXCoordinateRange()[1]) &&
+                isWithinRange(standardizedEventYCoordinates(), getLessonFifteenYCoordinateRange()[0], getLessonFifteenYCoordinateRange()[1]);
     }
 
 
 
-    private double standardizedEventXCoordinates() {
-        return  motionEvent.getX()  / X;
-
-    }
-    private double standardizedEventYCoordinates() {
-        return  motionEvent.getY() / Y;
-
-    }
     public void setUpAvatar(){
         int skinToneId = getResources().getIdentifier(authModel1.getSkinTone(), "drawable", getContext().getPackageName());
         Drawable skinToneDrawable = getResources().getDrawable(skinToneId);
@@ -623,3 +656,4 @@ public class LevelsFragment extends Fragment {
         super.onStop();
     }
 }
+
