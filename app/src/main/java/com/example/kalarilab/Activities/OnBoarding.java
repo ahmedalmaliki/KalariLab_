@@ -32,15 +32,12 @@ public class OnBoarding extends BaseActivity implements View.OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_on_boarding);
-
         initHooks();
 
 
     }
 
-    private void onBoardingAlreadySeen() {
-        sessionManagement.onBoardingSeen();;
-    }
+
 
     @Override
     protected void onStart() {
@@ -49,12 +46,13 @@ public class OnBoarding extends BaseActivity implements View.OnClickListener {
     }
 
     private void initHooks() {
+        sessionManagement = new SessionManagement(OnBoarding.this);
+        sessionManagement.setOnBoarding_seen(true);
 
-       viewPager = findViewById(R.id.viewPager);
+        viewPager = findViewById(R.id.viewPager);
        dotsLayout = findViewById(R.id.dotsLayout);
        sliderAdapter = new SliderAdapter(this);
-        sessionManagement = new SessionManagement(this);
-        sessionManagement.setFRESH_INSTALLStatus(false);
+
         mainLayout = findViewById(R.id.main);
         videoView = findViewById(R.id.videoView);
         viewPager.setAdapter(sliderAdapter);
@@ -160,7 +158,6 @@ public class OnBoarding extends BaseActivity implements View.OnClickListener {
         switch (v.getId()){
 
             case R.id.getStartedBtn:
-                onBoardingAlreadySeen();
                 moveToSignInActivity();
                 break;
             case R.id.nextBtn:

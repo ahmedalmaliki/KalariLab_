@@ -2,7 +2,10 @@ package com.example.kalarilab.Activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.WindowManager;
+import android.widget.VideoView;
 
 import com.example.kalarilab.Activities.BaseActivity;
 import com.example.kalarilab.Activities.LogInActivity;
@@ -15,20 +18,39 @@ import java.util.TimerTask;
 public class SplashScreenActivity extends BaseActivity {
     //the activity runs the splash screen in the beginning.
     private Timer timer; // This timer controls the time the splash screen stays up.
-    private  Context context;
+    private Context context;
+    private VideoView videoView;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //initMobileAds();
 
         setContentView(R.layout.activity_splash_screen);
+        // Make it fullscreen
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+
+        videoView = findViewById(R.id.splashVideo);
+
         if (!isTaskRoot()) {
             // Activity was brought to front and not created,
             // Thus finishing this will get us to the last viewed activity
             finish();
             return;
         }
-        initHooks();
+
+        String path = "android.resource://" + getPackageName() + "/" + R.raw.splash;
+        videoView.setVideoURI(Uri.parse(path));
+
+        videoView.setOnCompletionListener(mp -> {
+            // After video finishes -> go to main
+            startActivity(new Intent(SplashScreenActivity.this, LogInActivity.class));
+            finish();
+        });
+
+        videoView.start();
 
     }
 
@@ -43,25 +65,9 @@ public class SplashScreenActivity extends BaseActivity {
 //        adsInitThread.run();
 //    }
 
-    private void initHooks() {
-        context = this;
-        timer = new Timer();
-        timer.schedule(new RemindTask(), 3000); // The timer is scheduled for three seconds.
-    }
-    class RemindTask extends TimerTask{
 
-        @Override
-        public void run() {
-            this.moveToLogInActivity();
-        }
-        private void moveToLogInActivity() {
-            //After the timer ends the UI moves to the Log in  activity.
-            Intent intent = new Intent(context, LogInActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-            startActivity(intent);
-            finish();
-        }
-    }
+
+
 
 
 }

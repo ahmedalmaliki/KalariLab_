@@ -26,6 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 import ru.nikartm.support.ImageBadgeView;
 
 public class ChallengesActivity extends AppCompatActivity {
+
     private static final String TAG = "CAMERA_TUTORIAL";
     private androidx.appcompat.widget.Toolbar mToolbar ;
     private SessionManagement sessionManagement;

@@ -603,14 +603,15 @@ public class LogInActivity extends BaseActivity implements View.OnClickListener 
 
 
     public void checkFreshInstall(){
+        Log.d("autha", String.valueOf(sessionManagement.getOnBoarding_seen()));
         //this method checks if the install is fresh, if it is it shows the boarding activity, id not it checks the session
-        if (sessionManagement.getFRESH_INSTALLStatus()){
+        if (sessionManagement.getOnBoarding_seen()){
+            checkSession();
+        }else {
             //Show the onBoarding screen
             Log.d("autha", "0");
             moveToOnBoardingActivity();
-        }else {
 
-            checkSession();
         }
     }
 
